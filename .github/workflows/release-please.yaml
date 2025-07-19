@@ -1,0 +1,36 @@
+name: Release Please
+
+on:
+  push:
+    branches:
+      - skeleton # Allow to deactive the workflow on skeleton-symfony repo
+
+permissions:
+  contents: write
+  pull-requests: write
+  id-token: write
+
+jobs:
+  release-please:
+    name: Release Please
+    runs-on: ubuntu-latest
+    outputs:
+      release_created: ${{ steps.release-please.outputs.release_created }}
+      tag_name: ${{ steps.release-please.outputs.tag_name }}
+      version: ${{ steps.release-please.outputs.version }}
+    steps:
+      - id: release-please
+        uses: googleapis/release-please-action@v4
+        with:
+          token: ${{ secrets.RELEASE_PLEASE_TOKEN }}
+          config-file: .github/workflows/config/release-please-config.json
+          manifest-file: .github/workflows/config/.release-please-manifest.json
+
+  next-step:
+    name: Next Step
+    secrets: inherit
+    needs: [ release-please ]
+    if: ${{ needs.release-please.outputs.release_created }}
+    uses: ./.github/workflows/next-step.yaml
+    with:
+      tag: ${{ needs.release-please.outputs.version }}

@@ -1,0 +1,138 @@
+name: Quality Check
+run-name: Quality Check on ${{ github.head_ref }}
+
+on:
+  pull_request:
+    types:
+      - opened
+      - reopened
+      - synchronize
+      - ready_for_review
+
+jobs:
+  format-branch-name:
+    name: Format branch name
+    runs-on: ubuntu-latest
+    if: ${{ !github.event.pull_request.draft }}
+    outputs:
+      formated-branch-name: ${{ steps.format-branch-name.outputs.formated-branch-name }}
+    env:
+      BRANCH_NAME: ${{ github.head_ref }}
+    steps:
+      - name: Format branch Name
+        id: format-branch-name
+        # Replace slash `/` and underscore `_` to dash `-` then lowercase the string
+        run: |
+          FORMATED=${BRANCH_NAME//\//-}
+          FORMATED=${FORMATED//_/-}
+          FORMATED=${FORMATED,,}
+          echo "formated-branch-name=$FORMATED" >> $GITHUB_OUTPUT
+
+  build-dev-image:
+    name: Build dev image
+    if: ${{ success() }}
+    needs: [format-branch-name]
+    runs-on: ubuntu-latest
+    env:
+      ARTIFACT_NAME: ${{ needs.format-branch-name.outputs.formated-branch-name }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Docker CLI
+        uses: docker/setup-buildx-action@v3
+        with:
+          version: latest
+
+      - name: Build docker image
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+          target: SKELETON_php_dev
+          tags: SKELETON/${{env.ARTIFACT_NAME}}
+          load: true
+          outputs: type=docker,dest=/tmp/${{env.ARTIFACT_NAME}}.tar
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{env.ARTIFACT_NAME}}
+          path: "/tmp/${{env.ARTIFACT_NAME}}.tar"
+
+  phpstan:
+    name: PHPStan
+    if: ${{ success() }}
+    needs: [format-branch-name, build-dev-image]
+    runs-on: ubuntu-latest
+    env:
+      ARTIFACT_NAME: ${{ needs.format-branch-name.outputs.formated-branch-name }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Download Images
+        uses: actions/download-artifact@v4
+        with:
+          name: ${{ env.ARTIFACT_NAME }}
+          path: /tmp
+
+      - name: Load image
+        run: |
+          docker load --input /tmp/${{env.ARTIFACT_NAME}}.tar
+          docker tag SKELETON/${{env.ARTIFACT_NAME}} SKELETON-php:latest
+          docker image ls -a
+
+      - name: Start services
+        run: |
+          cp -n docker.env docker.env.local
+          echo "[CI ONLY] Make this because user in container cannot created during composer install. Due to rootless container."
+          chmod -R 777 ./
+          docker network create hostmanager
+          docker compose up -d
+
+      - name: PHPStan
+        run: docker compose exec -T php ./vendor/bin/phpstan analyse
+
+  cs-fixer:
+    name: Code Standard Fixer
+    if: ${{ success() }}
+    needs: [format-branch-name, build-dev-image]
+    runs-on: ubuntu-latest
+    env:
+      ARTIFACT_NAME: ${{ needs.format-branch-name.outputs.formated-branch-name }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Download Images
+        uses: actions/download-artifact@v4
+        with:
+          name: ${{env.ARTIFACT_NAME}}
+          path: /tmp
+
+      - name: Load image
+        run: |
+          docker load --input /tmp/${{env.ARTIFACT_NAME}}.tar
+          docker tag SKELETON/${{env.ARTIFACT_NAME}} SKELETON-php:latest
+          docker image ls -a
+
+      - name: Start services
+        run: |
+          cp -n docker.env docker.env.local
+          echo "[CI ONLY] Make this because user in container cannot created during composer install. Due to rootless container."
+          chmod -R 777 ./
+          docker network create hostmanager
+          docker compose up -d
+
+      - name: Run php-cs-fixer
+        id: php-cs-fixer
+        run: |
+          docker compose exec -T php bash -c "PHP_CS_FIXER_IGNORE_ENV=1 ./vendor/bin/php-cs-fixer fix --verbose --dry-run"
+
+      - name: Run twig-cs-fixer
+        if: ${{ steps.php-cs-fixer.conclusion == 'failure' || steps.php-cs-fixer.conclusion == 'success' }}
+        id: twig-cs-fixer
+        run: |
+          docker compose exec -T php vendor/bin/twig-cs-fixer check
