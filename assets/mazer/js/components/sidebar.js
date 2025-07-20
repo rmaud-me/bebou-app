@@ -102,7 +102,11 @@ export class Sidebar {
 
         // Scroll into active sidebar
         setTimeout(() => {
-            this.forceElementVisibility(document.querySelector(".sidebar-item.active"))
+            let sidebarItemActive = document.querySelector(".sidebar-item.active");
+            if (sidebarItemActive === null) {
+                return;
+            }
+            this.forceElementVisibility(sidebarItemActive)
         }, 300)
 
     }

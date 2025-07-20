@@ -2,9 +2,28 @@
 {% block title %}Home{% endblock %}
 {% block content %}
     <div class="page-heading">
-        <h3>Home</h3>
+        <h3>Bebou App</h3>
     </div>
     <div class="page-content">
-
+        <section class="row">
+            <div class="col-12 col-lg-9">
+                <div class="row">
+                    <div class="col-6 col-lg-3 col-md-6">
+                        <a href="{{ path('dmc_finder_main') }}">
+                            <twig:card:CardWithEmoji emoji="🧵">
+                                <h5 class="font-extrabold mb-0">DMC Finder</h5>
+                            </twig:card:CardWithEmoji>
+                        </a>
+                    </div>
+                    <div class="col-6 col-lg-3 col-md-6">
+                        <a href="{{ path('gin_ranking_main') }}">
+                            <twig:card:CardWithEmoji emoji="🍾">
+                                <h5 class="font-extrabold mb-0">Gin Ranking</h5>
+                            </twig:card:CardWithEmoji>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
     </div>
 {% endblock %}

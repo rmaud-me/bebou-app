@@ -24,9 +24,9 @@ services:
     container_name: bebou-nginx
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.nginx.rule=Host(`bebou.localhost`)"
-      - "traefik.http.routers.nginx.entryPoints=web,websecure"
-      - "traefik.http.routers.nginx.tls=true"
+      - "traefik.http.routers.bebou-nginx.rule=Host(`bebou.localhost`)"
+      - "traefik.http.routers.bebou-nginx.entryPoints=web,websecure"
+      - "traefik.http.routers.bebou-nginx.tls=true"
     volumes:
       - ./public:/srv/public:ro
       - ./.docker/nginx/dev.nginx.conf:/etc/nginx/conf.d/default.conf

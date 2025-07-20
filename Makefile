@@ -10,7 +10,6 @@ install: ## Install from scratch the project
 	$(DC) exec php composer install
 
 	$(MAKE) --no-print-directory install-assets
-	$(MAKE) --no-print-directory build-assets
 
 reset: ## Remove docker volume, files and folders generate by the projet
 	$(DC) down --remove-orphans -v --rmi all
@@ -22,9 +21,6 @@ reinstall: reset install ## Reinstall from scratch the project
 ## ASSETS 💅
 install-assets: ## Install assets via docker
 	$(DC) exec php bash -c "rm -rf ./assets/vendor && bin/console importmap:install"
-
-build-assets: ## Build assets via docker
-	$(DC) exec php bash -c "rm -rf ./public/assets && bin/console asset-map:compile"
 
 reset-assets: install-assets build-assets ## Reset all assets via docker
 
