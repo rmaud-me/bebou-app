@@ -3,7 +3,7 @@ name: Release Please
 on:
   push:
     branches:
-      - skeleton # Allow to deactive the workflow on skeleton-symfony repo
+      - main
 
 permissions:
   contents: write
