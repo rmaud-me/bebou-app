@@ -1,0 +1,22 @@
+.layout-navbar{
+    --navbar-height: 60px !important;
+}
+
+.navbar {
+    padding-bottom: 0.5rem !important;
+}
+
+#main #main-content {
+    padding-top: 0.5rem !important;
+}
+
+.sidebar-wrapper .sidebar-header img {
+    height: 3rem !important;
+}
+
+/* Bootstrap media query xl */
+@media (min-width: 1200px) {
+    #main #main-content {
+        padding-top: 1.5rem !important;
+    }
+}
