@@ -9,35 +9,17 @@
             <div class="col-12 col-lg-9">
                 <div class="row">
                     <div class="col-6 col-lg-3 col-md-6">
-                        <a class="card" href="{{ path('dmc_finder_main') }}">
-                            <div class="card-body px-4 py-4.5">
-                                <div class="row">
-                                    <div class="col-md-4 col-lg-12 col-xl-12 col-xxl-5 d-flex justify-content-start ">
-                                        <div class="stats-icon purple">
-                                            <div class="fs-4">🧵</div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7 d-inline-flex align-items-center">
-                                        <h5 class="font-extrabold mb-0">DMC Finder</h5>
-                                    </div>
-                                </div>
-                            </div>
+                        <a href="{{ path('dmc_finder_main') }}">
+                            <twig:card:CardWithEmoji emoji="🧵">
+                                <h5 class="font-extrabold mb-0">DMC Finder</h5>
+                            </twig:card:CardWithEmoji>
                         </a>
                     </div>
                     <div class="col-6 col-lg-3 col-md-6">
-                        <a class="card" href="{{ path('gin_ranking_main') }}">
-                            <div class="card-body px-4 py-4.5">
-                                <div class="row">
-                                    <div class="col-md-4 col-lg-12 col-xl-12 col-xxl-5 d-flex justify-content-start ">
-                                        <div class="stats-icon purple">
-                                            <div class="fs-4">🍾</div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7 d-inline-flex align-items-center">
-                                        <h5 class="font-extrabold mb-0">Gin Ranking</h5>
-                                    </div>
-                                </div>
-                            </div>
+                        <a href="{{ path('gin_ranking_main') }}">
+                            <twig:card:CardWithEmoji emoji="🍾">
+                                <h5 class="font-extrabold mb-0">Gin Ranking</h5>
+                            </twig:card:CardWithEmoji>
                         </a>
                     </div>
                 </div>
