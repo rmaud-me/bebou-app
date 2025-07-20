@@ -25,12 +25,3 @@ jobs:
           token: ${{ secrets.RELEASE_PLEASE_TOKEN }}
           config-file: .github/workflows/config/release-please-config.json
           manifest-file: .github/workflows/config/.release-please-manifest.json
-
-  next-step:
-    name: Next Step
-    secrets: inherit
-    needs: [ release-please ]
-    if: ${{ needs.release-please.outputs.release_created }}
-    uses: ./.github/workflows/next-step.yaml
-    with:
-      tag: ${{ needs.release-please.outputs.version }}
