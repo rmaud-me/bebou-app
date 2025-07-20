@@ -91,6 +91,7 @@ jobs:
           chmod -R 777 ./
           docker network create hostmanager
           docker compose up -d
+          docker compose exec -T php composer install
 
       - name: PHPStan
         run: docker compose exec -T php ./vendor/bin/phpstan analyse
@@ -125,6 +126,7 @@ jobs:
           chmod -R 777 ./
           docker network create hostmanager
           docker compose up -d
+          docker compose exec -T php composer install
 
       - name: Run php-cs-fixer
         id: php-cs-fixer
