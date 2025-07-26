@@ -1,0 +1,51 @@
+<div {{ attributes }}>
+    {{ form_start(form, {
+        attr: {
+            class: 'form form-horizontal needs-validation',
+            'data-action': 'live#action:prevent',
+            'data-live-action-param': 'submit',
+        },
+    }) }}
+        <div class="form-body">
+            <div class="row">
+                <div class="col-auto">
+                    {{ form_label(form.hexaText, 'Hexa #', {label_attr: {class: 'm-0'}}) }}
+                </div>
+                <div class="col-auto">
+                    {{ form_widget(form.hexaText) }}
+                    {{ form_errors(form.hexaText) }}
+                </div>
+                {% if rgbSearched %}
+                    <div class="col-auto">
+                        <input type="color" class="form-control form-control-color" readonly disabled value="{{ rgbSearched.toHexa }}" />
+                    </div>
+                {% endif %}
+                <div class="col-auto">
+                    <button type="submit" class="btn btn-primary btn-sm">
+                        Find
+                    </button>
+                </div>
+            </div>
+        </div>
+    {{ form_end(form) }}
+
+    {% if rgbSearched %}
+        <div class="mt-3">
+            <label>RGB recherché : RGB({{ rgbSearched.red }}, {{ rgbSearched.green }}, {{ rgbSearched.blue }}) ({{ rgbSearched.toHexa }})</label>
+        </div>
+    {% endif %}
+
+    {% if dmcFound %}
+        <hr />
+        <fieldset class="d-flex flex-column">
+            <legend>DMC trouvé</legend>
+            <label>#{{ dmcFound.dmc.number }}</label>
+            <label>Nom : {{ dmcFound.dmc.name }}</label>
+            <div class="d-flex">
+                <label class="me-2 align-self-center">Couleur : </label><input type="color" readonly disabled class="form-control form-control-color" value="{{ dmcFound.dmc.rgb.toHexa }}" />
+            </div>
+            <label>RGB({{ dmcFound.dmc.rgb.red }}, {{ dmcFound.dmc.rgb.green }}, {{ dmcFound.dmc.rgb.blue }}) ({{ dmcFound.dmc.rgb.toHexa }})</label>
+            <label><em>Score : RGB({{ dmcFound.score.diffRed }}, {{ dmcFound.score.diffGreen }}, {{ dmcFound.score.diffBlue }}) ; Total : {{ dmcFound.score.total }}</em></label>
+        </fieldset>
+    {% endif %}
+</div>
