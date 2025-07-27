@@ -9,8 +9,8 @@ use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
 #[AsTwigComponent(template: 'components/Sidebar.html.twig')]
 class Sidebar
 {
-    public const PICTURE_TYPE_EMOJI = 'emoji';
-    public const PICTURE_TYPE_ICON = 'icon';
+    public const string PICTURE_TYPE_EMOJI = 'emoji';
+    public const string PICTURE_TYPE_ICON = 'icon';
 
     /**
      * @return array<mixed>
@@ -19,25 +19,25 @@ class Sidebar
     {
         return [
             [
-                'name' => 'Menu',
+                'name' => 'menu.title',
                 'isTitle' => true,
             ],
             [
-                'name' => 'Home',
+                'name' => 'menu.items.home',
                 'isTitle' => false,
                 'url' => 'home',
                 'pictureType' => self::PICTURE_TYPE_ICON,
                 'icon' => 'house-fill',
             ],
             [
-                'name' => 'DMC Finder',
+                'name' => 'menu.items.dmc_finder',
                 'isTitle' => false,
                 'url' => 'dmc_finder_main',
                 'pictureType' => self::PICTURE_TYPE_EMOJI,
                 'emoji' => '🧵',
             ],
             [
-                'name' => 'Gin Ranking',
+                'name' => 'menu.items.gin_ranking',
                 'isTitle' => false,
                 'url' => 'gin_ranking_main',
                 'pictureType' => self::PICTURE_TYPE_EMOJI,

@@ -2,7 +2,7 @@
     <div class="sidebar-header position-relative">
         <div class="d-flex justify-content-between align-items-center">
             <div class="logo">
-                <a href="{{ path('home') }}"><img src="{{ asset('images/logo/bebou-logo.svg') }}" alt="Bebou App"></a>
+                <a href="{{ path('home') }}"><img src="{{ asset('images/logo/bebou-logo.svg') }}" alt="{{ 'app_name'|trans }}"></a>
             </div>
             <div class="theme-toggle d-flex gap-2  align-items-center mt-2">
                 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true"
@@ -41,7 +41,7 @@
         <ul class="menu">
             {% for sidebarItem in this.items %}
                 {% if sidebarItem.isTitle == true %}
-                    <li class="sidebar-title">{{ sidebarItem.name }}</li>
+                    <li class="sidebar-title">{{ sidebarItem.name|trans }}</li>
                 {% else %}
                     {% set hasSubMenuActive = false %}
                     {% if sidebarItem.subMenu is defined %}
@@ -66,18 +66,18 @@
                             {% else %}
                                 <i class="bi bi-{{ sidebarItem.icon }}"></i>
                             {% endif %}
-                            <span>{{ sidebarItem.name }}</span>
+                            <span>{{ sidebarItem.name|trans }}</span>
                         </a>
                         {% if sidebarItem.subMenu is defined and sidebarItem.subMenu|length > 0 %}
                             <ul class="submenu {% if hasSubMenuActive == true %}active{% endif %}">
                                 {% for sub in sidebarItem.subMenu %}
                                     <li class="submenu-item {% if sub.url == app.current_route %}active{% endif %} {% if sub.subMenu|length > 0 %}has-sub{% endif %}">
-                                        <a href="{{ path(sub.url) }}" class="submenu-link">{{ sub.name }}</a>
+                                        <a href="{{ path(sub.url) }}" class="submenu-link">{{ sub.name|trans }}</a>
                                         {% if sub.subMenu|length > 0 %}
                                             <ul class="submenu submenu-level-2 ">
                                                 {% for subsub in sub.submenu %}
                                                     <li class="submenu-item {% if subsub.url == app.current_route %}active{% endif %}">
-                                                        <a href="{{ path(subsub.url) }}" class="submenu-link">{{ subsub.name }}</a>
+                                                        <a href="{{ path(subsub.url) }}" class="submenu-link">{{ subsub.name|trans }}</a>
                                                     </li>
                                                 {% endfor %}
 

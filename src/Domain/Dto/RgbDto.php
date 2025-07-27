@@ -14,7 +14,7 @@ readonly class RgbDto
     }
 
     /**
-     * Used in RdbFinder template
+     * Used in RdbFinder template.
      */
     public function toHexa(): string
     {

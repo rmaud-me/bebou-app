@@ -7,9 +7,9 @@
         },
     }) }}
         <div class="form-body">
-            <div class="row">
+            <div class="row d-flex align-items-baseline">
                 <div class="col-auto">
-                    {{ form_label(form.hexaText, 'Hexa #', {label_attr: {class: 'm-0'}}) }}
+                    {{ form_label(form.hexaText) }}
                 </div>
                 <div class="col-auto">
                     {{ form_widget(form.hexaText) }}
@@ -22,7 +22,7 @@
                 {% endif %}
                 <div class="col-auto">
                     <button type="submit" class="btn btn-primary btn-sm">
-                        Find
+                        {{ 'dmc_finder.form.submit.label'|trans }}
                     </button>
                 </div>
             </div>
@@ -31,21 +31,21 @@
 
     {% if rgbSearched %}
         <div class="mt-3">
-            <label>RGB recherché : RGB({{ rgbSearched.red }}, {{ rgbSearched.green }}, {{ rgbSearched.blue }}) ({{ rgbSearched.toHexa }})</label>
+            <label>{{ 'dmc_finder.block.rgb_searched'|trans({'%red%': rgbSearched.red, '%green%': rgbSearched.green, '%blue%': rgbSearched.blue, '%hexa%': rgbSearched.toHexa}) }}</label>
         </div>
     {% endif %}
 
     {% if dmcFound %}
         <hr />
         <fieldset class="d-flex flex-column">
-            <legend>DMC trouvé</legend>
+            <legend>{{ 'dmc_finder.block.dmc_found.legend'|trans }}</legend>
             <label>#{{ dmcFound.dmc.number }}</label>
-            <label>Nom : {{ dmcFound.dmc.name }}</label>
+            <label>{{ 'dmc_finder.block.dmc_found.name'|trans }} {{ dmcFound.dmc.name }}</label>
             <div class="d-flex">
-                <label class="me-2 align-self-center">Couleur : </label><input type="color" readonly disabled class="form-control form-control-color" value="{{ dmcFound.dmc.rgb.toHexa }}" />
+                <label class="me-2 align-self-center">{{ 'dmc_finder.block.dmc_found.color'|trans }}</label><input type="color" readonly disabled class="form-control form-control-color" value="{{ dmcFound.dmc.rgb.toHexa }}" />
             </div>
-            <label>RGB({{ dmcFound.dmc.rgb.red }}, {{ dmcFound.dmc.rgb.green }}, {{ dmcFound.dmc.rgb.blue }}) ({{ dmcFound.dmc.rgb.toHexa }})</label>
-            <label><em>Score : RGB({{ dmcFound.score.diffRed }}, {{ dmcFound.score.diffGreen }}, {{ dmcFound.score.diffBlue }}) ; Total : {{ dmcFound.score.total }}</em></label>
+            <label>{{ 'dmc_finder.block.dmc_found.rgb'|trans({'%red%': dmcFound.dmc.rgb.red, '%green%': dmcFound.dmc.rgb.green, '%blue%': dmcFound.dmc.rgb.blue, '%hexa%': dmcFound.dmc.rgb.toHexa}) }}</label>
+            <label><em>{{ 'dmc_finder.block.dmc_found.score_rgb'|trans({'%red%': dmcFound.score.diffRed, '%green%': dmcFound.score.diffGreen, '%blue%': dmcFound.score.diffBlue, '%score%': dmcFound.score.total}) }}</em></label>
         </fieldset>
     {% endif %}
 </div>
