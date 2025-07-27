@@ -1,0 +1,29 @@
+app_name: Bebou app
+menu:
+    title: Menu
+    items:
+        home: Accueil
+        dmc_finder: DMC Finder
+        gin_ranking: Gin Ranking
+
+home:
+    title: Accueil
+    apps:
+        dmc_finder: DMC Finder
+        gin_ranking: Gin Ranking
+
+dmc_finder:
+    title: DMC Finder
+    form:
+        hexa:
+            label: 'Hexa #'
+        submit:
+            label: Trouver
+    block:
+        rgb_searched: "RGB recherché : RGB(%red%, %green%, %blue%) (%hexa%)"
+        dmc_found:
+            legend: DMC trouvé
+            name: "Nom :"
+            color: "Couleur :"
+            rgb: "RGB (%red%, %green%, %blue%) (%hexa%)"
+            score_rgb: "Score : RGB(%red%, %green%, %blue%); Total : %score%"
