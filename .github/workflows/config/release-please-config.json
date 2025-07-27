@@ -3,6 +3,5 @@
     "packages": {
         ".": {}
     },
-    "release-type": "php",
-    "bump-patch-for-minor-pre-major": true
+    "release-type": "php"
 }
