@@ -6,7 +6,7 @@ insert_final_newline = true
 indent_style = space
 indent_size = 4
 
-[{compose.yaml,compose.override.yaml,compose.yml}]
+[{compose.yaml,compose.override.yaml}]
 indent_size = 2
 
 [{.github/*/*.yaml,.github/*/*.yml,.github/*.yml}]
