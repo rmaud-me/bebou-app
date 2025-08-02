@@ -1,5 +1,26 @@
 # Changelog
 
+## [0.2.0](https://github.com/rmaud-me/bebou-app/compare/v0.1.0...v0.2.0) (2025-08-02)
+
+
+### Features
+
+* Import dmc finder ([#3](https://github.com/rmaud-me/bebou-app/issues/3)) ([2307db6](https://github.com/rmaud-me/bebou-app/commit/2307db606e6745c2c78676839a61b0279324eb38))
+
+
+### Bug Fixes
+
+* **release-please:** Remove bump-patch-for-minor-pre-major config ([affc8bc](https://github.com/rmaud-me/bebou-app/commit/affc8bc6b5e44f51cf8fda429f9f77a4eb012732))
+
+
+### Miscellaneous Chores
+
+* **composer:** bump doctrine/doctrine-bundle from 2.15.0 to 2.15.1 ([#9](https://github.com/rmaud-me/bebou-app/issues/9)) ([ab37f03](https://github.com/rmaud-me/bebou-app/commit/ab37f030c979823c3cd0ba3635fdfc1424f5ca22))
+* **composer:** bump symfony/expression-language from 7.3.0 to 7.3.2 ([#8](https://github.com/rmaud-me/bebou-app/issues/8)) ([6f45073](https://github.com/rmaud-me/bebou-app/commit/6f45073e56c974c701e83c54caa4aa393919c796))
+* **composer:** bump symfony/intl from 7.3.1 to 7.3.2 ([#7](https://github.com/rmaud-me/bebou-app/issues/7)) ([3aaf80d](https://github.com/rmaud-me/bebou-app/commit/3aaf80dcd309f62552450b1dcffbeee3ade4291b))
+* **composer:** bump symfony/translation from 7.3.1 to 7.3.2 ([#10](https://github.com/rmaud-me/bebou-app/issues/10)) ([14defb4](https://github.com/rmaud-me/bebou-app/commit/14defb407f2a5c0c00552f3aa5f6365d387ee05b))
+* **composer:** bump the composer-version group with 8 updates ([#6](https://github.com/rmaud-me/bebou-app/issues/6)) ([f616238](https://github.com/rmaud-me/bebou-app/commit/f61623830460f27626d47393a9a371c88a3192c6))
+
 ## 0.1.0 (2025-07-25)
 
 
