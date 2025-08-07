@@ -13,26 +13,21 @@ services:
       - docker.env
       - docker.env.local
     volumes:
-      - ./:/srv:rw,cached
-
+      - ./:/srv:rw
       - ./.docker/config/bashrc:/home/appuser/.bashrc
       - ./.docker/config/bash_aliases:/home/appuser/.bash_aliases
       - ./.docker/data/history:/home/appuser/.bash_history
-
-  nginx:
-    image: nginx:1.29-alpine
-    container_name: bebou-nginx
+      - caddy_data:/data
+      - caddy_config:/config
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.bebou-nginx.rule=Host(`bebou.localhost`)"
-      - "traefik.http.routers.bebou-nginx.entryPoints=web,websecure"
-      - "traefik.http.routers.bebou-nginx.tls=true"
-    volumes:
-      - ./public:/srv/public:ro
-      - ./.docker/nginx/dev.nginx.conf:/etc/nginx/conf.d/default.conf
+      - "traefik.http.routers.bebou-php.rule=Host(`bebou.localhost`)"
+      - "traefik.http.routers.bebou-php.entryPoints=web,websecure"
+      - "traefik.http.routers.bebou-php.tls=true"
     networks:
       - hostmanager
       - default
-    depends_on:
-      php:
-        condition: service_healthy
+
+volumes:
+  caddy_data: ~
+  caddy_config: ~

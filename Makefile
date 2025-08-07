@@ -22,8 +22,6 @@ reinstall: reset install ## Reinstall from scratch the project
 install-assets: ## Install assets via docker
 	$(DC) exec php bash -c "rm -rf ./assets/vendor && bin/console importmap:install"
 
-reset-assets: install-assets build-assets ## Reset all assets via docker
-
 ## QUALITY ✨
 cs-fixer: ## Fix cs on the project
     # Need PHP_CS_FIXER_IGNORE_ENV because php cs fixer is not fully compatible with php 8.4
