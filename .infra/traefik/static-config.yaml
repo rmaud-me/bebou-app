@@ -1,0 +1,20 @@
+global:
+    sendAnonymousUsage: true
+
+api:
+    dashboard: false
+    insecure: true
+
+# More information https://doc.traefik.io/traefik/reference/install-configuration/providers/docker/
+providers:
+    docker:
+        endpoint: "unix:///var/run/docker.sock"
+        exposedByDefault: false # Disallow creation route for container
+
+log:
+    level: ERROR
+    format: common
+
+entryPoints:
+    web:
+        address: ':80'
