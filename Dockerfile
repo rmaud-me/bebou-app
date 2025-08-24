@@ -50,7 +50,7 @@ RUN adduser --disabled-password --gecos "" appuser \
 
 USER appuser
 
-FROM bebou_php_dev AS bebou_php_prod
+FROM bebou_php_base AS bebou_php_prod
 
 ENV APP_ENV=prod
 
