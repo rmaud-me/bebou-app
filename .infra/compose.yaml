@@ -1,0 +1,11 @@
+services:
+  php:
+    image: ghcr.io/mihani/bebou-php:${TAG_IMAGE}
+
+  nginx:
+    image: ghcr.io/mihani/bebou-nginx:${TAG_IMAGE}
+    depends_on:
+      php:
+        condition: service_healthy
+    ports:
+      - 9000:80
