@@ -1,0 +1,36 @@
+name: Build & Deploy (Manually)
+run-name: Build and deploy ${{ github.ref_name }} on ${{ inputs.environment }}
+
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        required: true
+        description: Environment to build and publish
+        default: prod
+        type: environment
+
+permissions:
+  contents: write
+  pull-requests: write
+  id-token: write
+
+jobs:
+  git-ref-check:
+    name: Check git ref type
+    runs-on: ubuntu-latest
+    steps:
+      - if: github.ref_type != 'tag'
+        run: |
+          echo "Deploy forbidden from branch"
+          exit 1
+
+  build-deploy:
+    name: Build and Deploy
+    needs: [git-ref-check]
+    if: ${{ success() }}
+    secrets: inherit
+    uses: ./.github/workflows/reusable-deploy.yaml
+    with:
+      tag: ${{ github.ref_name }}
+      environment: ${{ inputs.environment }}
