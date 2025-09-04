@@ -1,0 +1,23 @@
+services:
+  php:
+    image: ghcr.io/rmaud-me/bebou-php:${IMAGE_TAG}
+
+  nginx:
+    image: ghcr.io/rmaud-me/bebou-nginx:${IMAGE_TAG}
+    depends_on:
+      php:
+        condition: service_healthy
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.nginx.entrypoints=web"
+      - "traefik.http.routers.nginx.rule=Host(`bebou-app.rmaud.me`)"
+
+# Container used to rollout container https://docker-rollout.wowu.dev/
+  traefik:
+    image: traefik:v3.5
+    container_name: bebou-traefik
+    ports:
+      - "9000:80"
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock:ro"
+      - "./traefik/static-config.yaml:/etc/traefik/traefik.yaml"
