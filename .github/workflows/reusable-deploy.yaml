@@ -73,13 +73,24 @@ jobs:
           tags: ${{ env.GHCR_NGINX }}:${{ env.IMAGE_TAG }}
           push: true
 
-#  deploy:
-#    name: Deploy task to ECS
-#    needs: [ build-and-push-image ]
-#    environment:
-#      name: ${{ inputs.environment }}
-#    runs-on: ubuntu-latest
-#    steps:
-# Connect to server
-# export the variable env $IMAGE_TAG
-# docker rollout nginx
+  deploy:
+    name: Deploy to server
+    needs: [ build-and-push-image ]
+    environment:
+      name: ${{ inputs.environment }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run command on server
+        uses: appleboy/ssh-action@v1
+        env:
+          IMAGE_TAG: ${{ env.IMAGE_TAG }}
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_KEY }}
+          port: ${{ secrets.SSH_PORT }}
+          passphrase: ${{ secrets.SSH_PASSPHRASE }}
+          envs: IMAGE_TAG
+          script: |
+            cd bebou-app
+            IMAGE_TAG=$IMAGE_TAG docker rollout nginx
