@@ -24,3 +24,13 @@ jobs:
           token: ${{ secrets.PAT_WORKFLOW_REPO }}
           config-file: .github/workflows/config/release-please-config.json
           manifest-file: .github/workflows/config/.release-please-manifest.json
+
+  build-deploy-prod:
+    name: Build & Deploy in prod
+    needs: [ release-please ]
+    if: ${{ needs.release-please.outputs.release_created }}
+    secrets: inherit
+    uses: ./.github/workflows/reusable-deploy.yaml
+    with:
+      version: ${{ needs.release-please.outputs.version }}
+      environment: prod
