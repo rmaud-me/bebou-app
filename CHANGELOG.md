@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.2.1](https://github.com/rmaud-me/bebou-app/compare/v0.2.0...v0.2.1) (2025-09-10)
+
+
+### Bug Fixes
+
+* **release-please:** Fix name of input pass to deploy workflow ([#21](https://github.com/rmaud-me/bebou-app/issues/21)) ([bb06566](https://github.com/rmaud-me/bebou-app/commit/bb065661c10baf0726e3b706b08414099e86e71b))
+* **release-please:** Fix permission for github deploy workflow ([#22](https://github.com/rmaud-me/bebou-app/issues/22)) ([f553f12](https://github.com/rmaud-me/bebou-app/commit/f553f12e6280c91d0b6a10a3c297b09067e2fd31))
+
 ## [0.2.0](https://github.com/rmaud-me/bebou-app/compare/v0.1.0...v0.2.0) (2025-09-04)
 
 
