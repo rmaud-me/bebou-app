@@ -32,5 +32,5 @@ jobs:
     secrets: inherit
     uses: ./.github/workflows/reusable-deploy.yaml
     with:
-      version: ${{ needs.release-please.outputs.version }}
+      tag: ${{ needs.release-please.outputs.version }}
       environment: prod
