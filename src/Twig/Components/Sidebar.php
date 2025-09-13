@@ -39,9 +39,23 @@ class Sidebar
             [
                 'name' => 'menu.items.gin_ranking',
                 'isTitle' => false,
-                'url' => 'gin_ranking_main',
                 'pictureType' => self::PICTURE_TYPE_EMOJI,
                 'emoji' => '🍾',
+                'subMenu' => [
+                    [
+                        'name' => 'Liste',
+                        'isTitle' => false,
+                        'url' => 'gin_ranking_main',
+                        'activeByHiddenChildren' => [
+                            'gin_ranking_new'
+                        ]
+                    ],
+                    [
+                        'name' => 'Accordéon',
+                        'isTitle' => false,
+                        'url' => 'gin_ranking_main2',
+                    ],
+                ]
             ],
         ];
     }

@@ -49,18 +49,21 @@
                             {% if sub.url == app.current_route %}
                                 {% set hasSubMenuActive = true %}
                             {% endif %}
-                            {% if sub.subMenu|length > 0 %}
+                            {% if sub.subMenu|default({})|length > 0 %}
                                 {% for subsub in sub.submenu %}
                                     {% if subsub.url == app.current_route %}
                                         {% set hasSubMenuActive = true %}
                                     {% endif %}
                                 {% endfor %}
                             {% endif %}
+                            {% if app.current_route in sub.activeByHiddenChildren|default({}) %}
+                                {% set hasSubMenuActive = true %}
+                            {% endif %}
                         {% endfor %}
                     {% endif %}
 
-                    <li class="sidebar-item {% if sidebarItem.url == app.current_route or hasSubMenuActive == true %}active{% endif %} {% if sidebarItem.subMenu is defined and sidebarItem.subMenu|length > 0 %}has-sub{% endif %}">
-                        <a href="{% if sidebarItem.url is not null %}{{ path(sidebarItem.url) }}{% else %}#{% endif %}" class='sidebar-link'>
+                    <li class="sidebar-item {% if sidebarItem.url|default(null) == app.current_route or hasSubMenuActive == true %}active{% endif %} {% if sidebarItem.subMenu is defined and sidebarItem.subMenu|length > 0 %}has-sub{% endif %}">
+                        <a href="{% if sidebarItem.url|default(null) is not null %}{{ path(sidebarItem.url) }}{% else %}#{% endif %}" class='sidebar-link'>
                             {% if sidebarItem.pictureType == constant('PICTURE_TYPE_EMOJI', this) %}
                                 <div class="fs-6">{{ sidebarItem.emoji }}</div>
                             {% else %}
@@ -71,16 +74,16 @@
                         {% if sidebarItem.subMenu is defined and sidebarItem.subMenu|length > 0 %}
                             <ul class="submenu {% if hasSubMenuActive == true %}active{% endif %}">
                                 {% for sub in sidebarItem.subMenu %}
-                                    <li class="submenu-item {% if sub.url == app.current_route %}active{% endif %} {% if sub.subMenu|length > 0 %}has-sub{% endif %}">
+                                    {% set isSubActive = sub.url == app.current_route or app.current_route in sub.activeByHiddenChildren|default({}) %}
+                                    <li class="submenu-item {% if isSubActive %}active{% endif %} {% if sub.subMenu|default({})|length > 0 %}has-sub{% endif %}">
                                         <a href="{{ path(sub.url) }}" class="submenu-link">{{ sub.name|trans }}</a>
-                                        {% if sub.subMenu|length > 0 %}
+                                        {% if sub.subMenu|default({})|length > 0 %}
                                             <ul class="submenu submenu-level-2 ">
                                                 {% for subsub in sub.submenu %}
                                                     <li class="submenu-item {% if subsub.url == app.current_route %}active{% endif %}">
                                                         <a href="{{ path(subsub.url) }}" class="submenu-link">{{ subsub.name|trans }}</a>
                                                     </li>
                                                 {% endfor %}
-
                                             </ul>
                                         {% endif %}
                                     </li>

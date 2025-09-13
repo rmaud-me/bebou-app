@@ -27,3 +27,18 @@ dmc_finder:
             color: "Couleur :"
             rgb: "RGB (%red%, %green%, %blue%) (%hexa%)"
             score_rgb: "Score : RGB(%red%, %green%, %blue%); Total : %score%"
+
+gin_ranking:
+    form:
+        edit:
+            submit: Modifier
+        new:
+            submit: Ajouter
+    list:
+        add: Ajouter
+        no_gin: Pas de gin
+    category:
+        value:
+            love: J'aime 🥰
+            neutral: Neutre 😐
+            hate: Je n'aime pas 😡
