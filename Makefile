@@ -4,6 +4,7 @@ UID = $(shell id -u)
 ## INSTALL 📜
 install: ## Install from scratch the project
 	cp -n .env .env.local && cp -n docker.env docker.env.local && cp -n .docker/data/history.dist .docker/data/history
+	mkdir -p ./sqlite
 
 	$(DC) up -d --build --wait
 

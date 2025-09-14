@@ -1,6 +1,7 @@
 ###< docker ###
 .docker/data/history
 docker.env.local
+compose.override.yaml
 ###> docker ###
 
 ###> ide/os ###
@@ -36,4 +37,7 @@ phpstan.neon
 /assets/vendor/
 ###< symfony/asset-mapper ###
 
-compose.override.yaml
+###> sqlite ###
+/sqlite/*
+!/sqlite/.gitignore
+###< sqlite ###

@@ -1,6 +1,8 @@
 services:
   php:
     image: ghcr.io/rmaud-me/bebou-php:${IMAGE_TAG}
+    volumes:
+      - "./sqlite/:/srv/sqlite/"
 
   nginx:
     image: ghcr.io/rmaud-me/bebou-nginx:${IMAGE_TAG}
