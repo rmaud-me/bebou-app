@@ -7,11 +7,17 @@ namespace App\DataFixtures;
 use App\Entity\User;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 class UserFixtures extends Fixture
 {
     public const string USER_GIN_REFERENCE = 'user-gin';
     public const string USER_REFERENCE = 'user';
+
+    public function __construct(
+        private UserPasswordHasherInterface $passwordHasher,
+    ) {
+    }
 
     public function load(ObjectManager $manager): void
     {
@@ -19,7 +25,7 @@ class UserFixtures extends Fixture
             $user = new User();
             $user->email = $userDatum['email'];
             $user->roles = $userDatum['roles'];
-            $user->setPassword($userDatum['password']);
+            $user->setPassword($this->passwordHasher->hashPassword($user, $userDatum['password']));
 
             $manager->persist($user);
 
@@ -29,6 +35,9 @@ class UserFixtures extends Fixture
         $manager->flush();
     }
 
+    /**
+     * @return mixed[]
+     */
     private static function getUserData(): array
     {
         return [
