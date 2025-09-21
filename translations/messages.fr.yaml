@@ -28,6 +28,18 @@ dmc_finder:
             rgb: "RGB (%red%, %green%, %blue%) (%hexa%)"
             score_rgb: "Score : RGB(%red%, %green%, %blue%); Total : %score%"
 
+security:
+    login:
+        title: Connexion
+        auth_subtitle: "Page protégé, connexion obligatoire"
+        already_connect: "Utilisateur déjà connecté en tant que %userId%, <a href=\"%logoutRoute%\">Déconnexion</a>"
+        form:
+            email:
+                placeholder: "Email"
+            password:
+                placeholder: "Mot de passe"
+            submit: Connexion
+
 gin_ranking:
     form:
         edit:
