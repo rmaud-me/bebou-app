@@ -19,6 +19,17 @@ services:
       - ./.docker/config/bash_aliases:/home/appuser/.bash_aliases
       - ./.docker/data/history:/home/appuser/.bash_history
 
+  mailcatcher:
+    image: axllent/mailpit
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.bebou-mail.rule=Host(`mail.bebou.localhost`)"
+      - "traefik.http.routers.bebou-mail.entryPoints=web,websecure"
+      - "traefik.http.routers.bebou-mail.tls=true"
+    environment:
+      MP_SMTP_AUTH_ACCEPT_ANY: 1
+      MP_SMTP_AUTH_ALLOW_INSECURE: 1
+
   nginx:
     image: nginx:1.29-alpine
     container_name: bebou-nginx
