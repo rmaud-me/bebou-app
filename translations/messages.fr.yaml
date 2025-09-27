@@ -38,8 +38,10 @@ gin_ranking:
         add: Ajouter
         no_gin: Pas de gin
         name: Nom
+        title: Gin Ranking
     category:
         value:
             love: J'aime 🥰
             neutral: Neutre 😐
             hate: Je n'aime pas 😡
+    title: Gin Ranking

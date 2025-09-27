@@ -1,8 +1,8 @@
 {% extends 'layouts/main.html.twig' %}
-{% block title %}Gin Ranking{% endblock %}
+{% block title %}{{ 'gin_ranking.title'|trans }}{% endblock %}
 {% block content %}
     <div class="page-heading">
-        <h3>Gin Ranking</h3>
+        <h3>{{ 'gin_ranking.title'|trans }}</h3>
     </div>
     <div class="page-content">
         {{ form_start(form) }}

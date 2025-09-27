@@ -1,13 +1,13 @@
 {% extends 'layouts/main.html.twig' %}
-{% block title %}Gin Ranking{% endblock %}
+{% block title %}{{ 'gin_ranking.title'|trans }}{% endblock %}
 {% block content %}
     <div class="page-heading">
-        <h3>Gin Ranking</h3>
+        <h3>{{ 'gin_ranking.title'|trans }}</h3>
     </div>
     <div class="page-content">
         <a href="{{ path('gin_ranking_new') }}" class="btn btn-primary mb-2">{{ 'gin_ranking.list.add'|trans }}</a>
         {% if gins is empty %}
-            <div>Pas de gin</div>
+            <div>{{ 'gin_ranking.list.no_gin'|trans }}</div>
         {% else %}
         <div class="accordion" id="accordion-container">
             {% for key, case in enum_cases('App\\Enum\\GinRanking\\CategoryEnum') %}
