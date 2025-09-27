@@ -15,7 +15,7 @@
                 <div class="accordion-item">
                     <h2 class="accordion-header">
                         <button class="accordion-button {% if not isDefault %}collapsed{% endif %}" type="button" data-bs-toggle="collapse" data-bs-target="#accordion-{{ key }}" aria-expanded="{% if isDefault %}true{% else %}false{% endif %}" aria-controls="accordion-{{ case.value }}">
-                            {{ case|trans }}
+                            {{ case|trans }} ({{ gins|filter(item => item.category == case)|length }})
                         </button>
                     </h2>
                     <div id="accordion-{{ key }}" class="accordion-collapse collapse {% if key == 0 %}show{% else %}hide{% endif %}" data-bs-parent="#accordion-container">

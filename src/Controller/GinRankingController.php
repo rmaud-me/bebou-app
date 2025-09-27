@@ -4,12 +4,14 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
+use App\Dto\RemoveFileDto;
 use App\Entity\GinRanking\Gin;
+use App\Event\RemoveFileOnTerminateListener;
 use App\Form\GinRanking\GinType;
 use App\GinRanking\Dto\GinUpsertDto;
-use App\GinRanking\ImageOptimizer;
 use App\Repository\GinRanking\GinRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use League\Flysystem\FilesystemOperator;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -49,8 +51,10 @@ class GinRankingController extends AbstractController
     }
 
     #[Route('/{id}/edit', name: 'edit')]
-    public function edit(Request $request, Gin $gin, EntityManagerInterface $entityManager, ObjectMapperInterface $objectMapper, ImageOptimizer $imageOptimizer): Response
+    public function edit(Request $request, Gin $gin, EntityManagerInterface $entityManager, ObjectMapperInterface $objectMapper,
+        GinRepository $ginRepository, RemoveFileOnTerminateListener $removeFileOnTerminateListener, FilesystemOperator $ginImageStorage): Response
     {
+        $oldPath = $gin->imagePath;
         $form = $this->createForm(GinType::class, $objectMapper->map($gin, GinUpsertDto::class));
         $form->handleRequest($request);
 
@@ -59,6 +63,10 @@ class GinRankingController extends AbstractController
             $objectMapper->map($ginUpsertDto, $gin);
 
             $entityManager->flush();
+
+            if ($oldPath !== $gin->imagePath && !$ginRepository->isUsed($oldPath)) {
+                $removeFileOnTerminateListener->addPathToRemove(new RemoveFileDto($ginImageStorage, $oldPath));
+            }
 
             return $this->redirectToRoute('gin_ranking_main');
         }

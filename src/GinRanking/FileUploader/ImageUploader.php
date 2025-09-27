@@ -10,7 +10,7 @@ use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\String\Slugger\SluggerInterface;
 
-final readonly class FileUploader
+final readonly class ImageUploader
 {
     public function __construct(private SluggerInterface $slugger, private ImageOptimizer $imageOptimizer)
     {

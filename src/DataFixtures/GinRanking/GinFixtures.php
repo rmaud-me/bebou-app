@@ -6,7 +6,7 @@ namespace App\DataFixtures\GinRanking;
 
 use App\Entity\GinRanking\Gin;
 use App\Enum\GinRanking\CategoryEnum;
-use App\GinRanking\FileUploader\FileUploader;
+use App\GinRanking\FileUploader\ImageUploader;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 use League\Flysystem\FilesystemOperator;
@@ -15,7 +15,7 @@ use Symfony\Component\HttpFoundation\File\File;
 class GinFixtures extends Fixture
 {
     public function __construct(
-        private readonly FileUploader $fileUploader,
+        private readonly ImageUploader $imageUploader,
         private readonly FilesystemOperator $ginImageStorage,
     ) {
     }
@@ -74,6 +74,6 @@ class GinFixtures extends Fixture
 
     private function moveAndResize(string $fileToFixtures): string
     {
-        return $this->fileUploader->upload($this->ginImageStorage, new File($fileToFixtures));
+        return $this->imageUploader->upload($this->ginImageStorage, new File($fileToFixtures));
     }
 }

@@ -6,7 +6,6 @@ namespace App\GinRanking;
 
 use Imagine\Gd\Imagine;
 use Imagine\Image\Box;
-use LogicException;
 
 final class ImageOptimizer
 {
@@ -24,7 +23,7 @@ final class ImageOptimizer
         $sizes = \getimagesize($filename);
 
         if (!$sizes) {
-            throw new LogicException('Cannot getting size of '.$filename);
+            throw new \LogicException('Cannot getting size of ' . $filename);
         }
 
         [$iheight, $iwidth] = $sizes;

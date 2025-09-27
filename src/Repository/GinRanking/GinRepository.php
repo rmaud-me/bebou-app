@@ -15,4 +15,9 @@ class GinRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Gin::class);
     }
+
+    public function isUsed(string $imagePath): bool
+    {
+        return $this->count(['imagePath' => $imagePath]) > 0;
+    }
 }

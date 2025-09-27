@@ -6,7 +6,7 @@ namespace App\GinRanking\Transformer;
 
 use App\Entity\GinRanking\Gin;
 use App\GinRanking\Dto\GinUpsertDto;
-use App\GinRanking\FileUploader\FileUploader;
+use App\GinRanking\FileUploader\ImageUploader;
 use League\Flysystem\FilesystemOperator;
 use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
@@ -17,7 +17,7 @@ final readonly class ConvertUploadedFileToFilepathTransformer implements Transfo
 {
     public function __construct(
         private FilesystemOperator $ginImageStorage,
-        private FileUploader $fileUploader,
+        private ImageUploader $imageUploader,
     ) {
     }
 
@@ -32,6 +32,6 @@ final readonly class ConvertUploadedFileToFilepathTransformer implements Transfo
             throw new \LogicException('Should never happened, value of image is not an instance of ' . UploadedFile::class);
         }
 
-        return $this->fileUploader->upload($this->ginImageStorage, $value);
+        return $this->imageUploader->upload($this->ginImageStorage, $value);
     }
 }
