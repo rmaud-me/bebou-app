@@ -5,31 +5,41 @@
         <h3>Gin Ranking</h3>
     </div>
     <div class="page-content">
+        <a href="{{ path('gin_ranking_new') }}" class="btn btn-primary mb-2">{{ 'gin_ranking.list.add'|trans }}</a>
         {% if gins is empty %}
-            <div class="align-items-center">
-                <span>{{ 'gin_ranking.list.no_gin'|trans }}</span> <br/>
-                <a class="btn btn-primary" href="{{ path('gin_ranking_new') }}">{{ 'gin_ranking.list.add'|trans }}</a>
-            </div>
+            <div>Pas de gin</div>
         {% else %}
-            <a class="btn btn-primary" href="{{ path('gin_ranking_new') }}">{{ 'gin_ranking.list.add'|trans }}</a>
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>Nom</th>
-                        <th>Catégorie</th>
-                        <th>{{ ux_icon('mdi:gear-outline', {width: 32, height: 32}) }}</th>
-                    </tr>
-                </thead>
-                <tbody>
-                {% for gin in gins %}
-                    <tr>
-                        <td>{{ gin.name }}</td>
-                        <td>{{ gin.category|trans }}</td>
-                        <td><a href="{{ path('gin_ranking_edit', {id: gin.id}) }}">{{ ux_icon('solar:pen-bold', {width: 32, height: 32}) }}</a></td>
-                    </tr>
-                {% endfor %}
-                </tbody>
-            </table>
+        <div class="accordion" id="accordion-container">
+            {% for key, case in enum_cases('App\\Enum\\GinRanking\\CategoryEnum') %}
+                {% set isDefault = case == constant('App\\Enum\\GinRanking\\CategoryEnum::LOVE') %}
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button {% if not isDefault %}collapsed{% endif %}" type="button" data-bs-toggle="collapse" data-bs-target="#accordion-{{ key }}" aria-expanded="{% if isDefault %}true{% else %}false{% endif %}" aria-controls="accordion-{{ case.value }}">
+                            {{ case|trans }}
+                        </button>
+                    </h2>
+                    <div id="accordion-{{ key }}" class="accordion-collapse collapse {% if key == 0 %}show{% else %}hide{% endif %}" data-bs-parent="#accordion-container">
+                        <div class="accordion-body">
+                            <div class="row">
+                                {% for gin in gins|filter(item => item.category == case) %}
+                                    <div class="col-lg-2 col-md-4">
+                                        <a href="{{ path('gin_ranking_edit', {id: gin.id}) }}">
+                                            <div class="card mb-3">
+                                                <img src="{{ asset(gin.imagePath, 'gin_ranking') }}" class="rounded-start gin-ranking-list__img" alt="{{ gin.name }}">
+                                                <div class="card-body text-center">
+                                                    {{ gin.name }}
+                                                    <a href="{{ path('gin_ranking_remove', {id: gin.id}) }}">{{ ux_icon('charm:cross', {width: 25, height: 25}) }}</a>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
         {% endif %}
     </div>
 {% endblock %}

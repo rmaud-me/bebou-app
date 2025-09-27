@@ -1,6 +1,12 @@
+parameters:
+    kernel.public_dir: '%kernel.project_dir%/public'
 # see https://symfony.com/doc/current/reference/configuration/framework.html
 framework:
     secret: '%env(APP_SECRET)%'
+    assets:
+        packages:
+            gin_ranking:
+                base_path: "%env(GIN_RANKING_BASE_PATH)%"
     #csrf_protection: true
     trusted_proxies: '%env(TRUSTED_PROXIES)%'
 

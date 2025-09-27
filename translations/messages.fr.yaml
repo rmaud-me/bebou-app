@@ -37,6 +37,7 @@ gin_ranking:
     list:
         add: Ajouter
         no_gin: Pas de gin
+        name: Nom
     category:
         value:
             love: J'aime 🥰
