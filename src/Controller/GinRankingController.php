@@ -22,7 +22,7 @@ use Symfony\Component\Routing\Attribute\Route;
 class GinRankingController extends AbstractController
 {
     #[Route('/', name: 'main')]
-    public function main2(GinRepository $ginRepository): Response
+    public function main(GinRepository $ginRepository): Response
     {
         return $this->render('gin-ranking/main.html.twig', [
             'gins' => $ginRepository->findBy([], ['category' => 'DESC']),
