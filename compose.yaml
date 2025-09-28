@@ -24,7 +24,7 @@ services:
     container_name: bebou-mail
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.bebou-mail.rule=Host(`mail-bebou.localhost`)"
+      - "traefik.http.routers.bebou-mail.rule=Host(`bebou-mail.localhost`)"
       - "traefik.http.routers.bebou-mail.entryPoints=web,websecure"
       - "traefik.http.routers.bebou-mail.tls=true"
       - "traefik.http.services.bebou-mail.loadbalancer.server.port=8025"
