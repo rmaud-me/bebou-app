@@ -1,0 +1,14 @@
+when@dev:
+    flysystem:
+        storages:
+            gin.image.storage:
+                adapter: 'local'
+                options:
+                    directory: '%kernel.public_dir%%env(GIN_RANKING_BASE_PATH)%'
+when@prod:
+    flysystem:
+        storages:
+            default.storage:
+                adapter: 'local'
+                options:
+                    directory: '%kernel.project_dir%/var/storage/default'

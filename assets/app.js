@@ -8,6 +8,7 @@
 import './mazer/css/app.css';
 import './mazer/css/app-dark.css';
 import './styles/custom-app.css';
+import './styles/gin-ranking/list.css';
 
 import './bootstrap.js'
 

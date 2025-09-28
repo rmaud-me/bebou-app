@@ -19,7 +19,7 @@ RUN apt-get update \
 ADD --chmod=0755 https://github.com/mlocati/docker-php-extension-installer/releases/latest/download/install-php-extensions /usr/local/bin/
 
 RUN set -eux; \
-    install-php-extensions @composer zip intl apcu opcache \
+    install-php-extensions @composer zip intl apcu opcache gd \
     ;
 
 COPY --link .docker/php/conf.d/10-app.ini $PHP_INI_DIR/conf.d/

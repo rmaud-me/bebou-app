@@ -1,0 +1,15 @@
+{% extends 'layouts/main.html.twig' %}
+{% block title %}{{ 'gin_ranking.title'|trans }}{% endblock %}
+{% block content %}
+    <div class="page-heading">
+        <h3>{{ 'gin_ranking.title'|trans }}</h3>
+    </div>
+    <div class="page-content">
+        {{ form_start(form) }}
+        {{ form_row(form.name) }}
+        {{ form_row(form.category) }}
+        {{ form_row(form.image) }}
+        <button class="btn btn-primary" type="submit">{{ 'gin_ranking.form.new.submit'|trans }}</button>
+        {{ form_end(form) }}
+    </div>
+{% endblock %}
