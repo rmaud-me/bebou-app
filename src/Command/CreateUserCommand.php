@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Command;
 
 use App\Entity\User;
+use App\Factory\UserFactory;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Command\Command;
@@ -22,8 +23,8 @@ class CreateUserCommand extends Command
 {
     public function __construct(
         private EntityManagerInterface $entityManager,
-        private UserPasswordHasherInterface $userPasswordHasher,
-        private ValidatorInterface $validator
+        private ValidatorInterface $validator,
+        private UserFactory $userFactory
     ) {
         parent::__construct();
     }
@@ -77,10 +78,7 @@ class CreateUserCommand extends Command
             return Command::FAILURE;
         }
 
-        $user = new User();
-        $user->email = $email;
-        $user->roles = ['ROLE_GIN'];
-        $user->setPassword($this->userPasswordHasher->hashPassword($user, $password));
+        $user = $this->userFactory->createGinUser($email, $password);
 
         $this->entityManager->persist($user);
         $this->entityManager->flush();
