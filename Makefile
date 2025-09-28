@@ -9,7 +9,7 @@ install: ## Install from scratch the project
 
 	$(DC) exec php composer install
 
-	$(DC) exec php bin/console doctrine:migration:migrate
+	$(DC) exec php bin/console doctrine:migration:migrate --no-interaction
 
 	$(MAKE) --no-print-directory fixtures
 
