@@ -21,14 +21,19 @@ services:
 
   mailcatcher:
     image: axllent/mailpit
+    container_name: bebou-mail
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.bebou-mail.rule=Host(`mail.bebou.localhost`)"
+      - "traefik.http.routers.bebou-mail.rule=Host(`mail-bebou.localhost`)"
       - "traefik.http.routers.bebou-mail.entryPoints=web,websecure"
       - "traefik.http.routers.bebou-mail.tls=true"
+      - "traefik.http.services.bebou-mail.loadbalancer.server.port=8025"
     environment:
       MP_SMTP_AUTH_ACCEPT_ANY: 1
       MP_SMTP_AUTH_ALLOW_INSECURE: 1
+    networks:
+      - hostmanager
+      - default
 
   nginx:
     image: nginx:1.29-alpine
