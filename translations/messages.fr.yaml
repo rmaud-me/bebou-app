@@ -28,6 +28,30 @@ dmc_finder:
             rgb: "RGB (%red%, %green%, %blue%) (%hexa%)"
             score_rgb: "Score : RGB(%red%, %green%, %blue%); Total : %score%"
 
+security:
+    login:
+        title: Connexion
+        auth_subtitle: "Page protégé, connexion obligatoire"
+        already_connect: "Utilisateur déjà connecté en tant que %userId%, <a href=\"%logoutRoute%\">Déconnexion</a>"
+        form:
+            email:
+                placeholder: "Email"
+            password:
+                placeholder: "Mot de passe"
+            submit: Connexion
+        forgot_password: Mot de passe perdu ?
+    forgot_password:
+        title: Mot de passe perdu
+        auth_subtitle: Renseignez votre email et vous recevrez un lien pour réinitialiser votre mot de passe.
+        form:
+            email:
+                placeholder: "Email"
+            submit: Envoyer
+        remember_account: "Vous vous souvenez de votre compte ? <a href=\"%loginRoute%\" class=\"font-bold\">Connexion</a>."
+        flashes:
+            notice:
+                forgot_password_request_handle: "Demande de changement de mot de passe pris en compte."
+
 gin_ranking:
     form:
         edit:

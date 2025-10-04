@@ -1,0 +1,37 @@
+{% extends 'layouts/auth.html.twig' %}
+
+{% block title %}{{ 'security.login.title'|trans }}{% endblock %}
+
+{% block content %}
+    <h1 class="auth-title">{{ 'security.login.title'|trans }}</h1>
+    <p class="auth-subtitle mb-5">{{ 'security.login.auth_subtitle'|trans }}</p>
+
+    <form action="{{ path('app_login') }}" method="POST">
+        {% if error %}
+            <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+        {% endif %}
+        {% if app.user %}
+            <div class="mb-3">
+                {{ 'security.login.already_connect'|trans({'%userId%': app.user.userIdentifier, '%logoutRoute%': path('app_logout')})|raw }}
+            </div>
+        {% endif %}
+        <input type="hidden" name="_csrf_token" data-controller="csrf-protection" value="{{ csrf_token('authenticate') }}">
+
+        <div class="form-group position-relative has-icon-left mb-4">
+            <input type="text" class="form-control form-control-xl" placeholder="{{ 'security.login.form.email.placeholder'|trans }}" name="_username" value="{{ lastUsername }}" required>
+            <div class="form-control-icon">
+                <twig:ux:icon name="bi:person" />
+            </div>
+        </div>
+        <div class="form-group position-relative has-icon-left mb-4">
+            <input type="password" class="form-control form-control-xl" placeholder="{{ 'security.login.form.password.placeholder'|trans }}" name="_password" required>
+            <div class="form-control-icon">
+                <twig:ux:icon name="bi:shield-lock" />
+            </div>
+        </div>
+        <button class="btn btn-primary btn-block btn-lg shadow-lg mt-5">{{ 'security.login.form.submit'|trans }}</button>
+    </form>
+    <div class="text-center mt-5 text-lg fs-4">
+        <p><a class="font-bold" href="{{ path('app_forgot_password') }}">{{ 'security.login.forgot_password'|trans }}</a></p>
+    </div>
+{% endblock %}

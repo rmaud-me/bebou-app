@@ -1,10 +1,13 @@
-when@dev:
+when@dev: &flysystem_dev
     flysystem:
         storages:
             gin.image.storage:
                 adapter: 'local'
                 options:
                     directory: '%kernel.public_dir%%env(GIN_RANKING_BASE_PATH)%'
+
+when@test: *flysystem_dev
+
 when@prod:
     flysystem:
         storages:
