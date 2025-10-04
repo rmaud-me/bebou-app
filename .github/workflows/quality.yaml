@@ -94,7 +94,7 @@ jobs:
           docker compose exec -T php composer install
 
       - name: PHPStan
-        run: docker compose exec -T php ./vendor/bin/phpstan analyse
+        run: docker compose exec -T php ./vendor/bin/phpstan analyse --memory-limit=-1
 
   cs-fixer:
     name: Code Standard Fixer
