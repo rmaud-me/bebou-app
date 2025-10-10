@@ -1,5 +1,20 @@
 # Changelog
 
+## [0.3.0](https://github.com/rmaud-me/bebou-app/compare/v0.2.1...v0.3.0) (2025-10-10)
+
+
+### Features
+
+* Gestion des gins ([#26](https://github.com/rmaud-me/bebou-app/issues/26)) ([341ef4b](https://github.com/rmaud-me/bebou-app/commit/341ef4b60535a37ec1a3e7a4c1bc2b9f198bb00c))
+* **mailer:** [#24](https://github.com/rmaud-me/bebou-app/issues/24) - Ajout de symfony mailer avec un mailcatcher + scaleway ([#30](https://github.com/rmaud-me/bebou-app/issues/30)) ([8911d07](https://github.com/rmaud-me/bebou-app/commit/8911d0799cbf4b64d86b9232bc7774d3ba8114a9))
+* **security:** Add login, registration system to protect some page ([#25](https://github.com/rmaud-me/bebou-app/issues/25)) ([bf8d6bd](https://github.com/rmaud-me/bebou-app/commit/bf8d6bd826cedf54a6b8264d88007b42b9cfe6ee))
+* **security:** Protect page behind ROLE_GIN ([#36](https://github.com/rmaud-me/bebou-app/issues/36)) ([12b9f4e](https://github.com/rmaud-me/bebou-app/commit/12b9f4e774cabbb1c6f3a47b5641863314dadb48))
+
+
+### Miscellaneous Chores
+
+* **composer:** bump the composer-version group with 23 updates ([#34](https://github.com/rmaud-me/bebou-app/issues/34)) ([faa3555](https://github.com/rmaud-me/bebou-app/commit/faa3555d0e4426d63d09d3ec139f8caaa7ad916a))
+
 ## [0.2.1](https://github.com/rmaud-me/bebou-app/compare/v0.2.0...v0.2.1) (2025-09-10)
 
 
