@@ -5,7 +5,9 @@
         <h3>{{ 'gin_ranking.title'|trans }}</h3>
     </div>
     <div class="page-content">
-        <a href="{{ path('gin_ranking_new') }}" class="btn btn-primary mb-2">{{ 'gin_ranking.list.add'|trans }}</a>
+        {% if is_granted('ROLE_GIN') %}
+            <a href="{{ path('gin_ranking_new') }}" class="btn btn-primary mb-2">{{ 'gin_ranking.list.add'|trans }}</a>
+        {% endif %}
         {% if gins is empty %}
             <div>{{ 'gin_ranking.list.no_gin'|trans }}</div>
         {% else %}
@@ -23,15 +25,25 @@
                             <div class="row">
                                 {% for gin in gins|filter(item => item.category == case) %}
                                     <div class="col-lg-2 col-md-4">
-                                        <a href="{{ path('gin_ranking_edit', {id: gin.id}) }}">
+                                        {% if is_granted('ROLE_GIN') %}
+                                            <a href="{{ path('gin_ranking_edit', {id: gin.id}) }}">
+                                        {% endif %}
+
                                             <div class="card mb-3">
+                                                {% if is_granted('ROLE_GIN') %}
+                                                    <a class="position-absolute z-3 top-0 end-0 p-2" href="{{ path('gin_ranking_remove', {id: gin.id}) }}">{{ ux_icon('bi:trash3-fill', {width: 20, height: 20, color: '#dc3545'}) }}</a>
+                                                {% endif %}
                                                 <img src="{{ asset(gin.imagePath, 'gin_ranking') }}" class="rounded-start gin-ranking-list__img" alt="{{ gin.name }}">
                                                 <div class="card-body text-center">
                                                     {{ gin.name }}
-                                                    <a href="{{ path('gin_ranking_remove', {id: gin.id}) }}">{{ ux_icon('charm:cross', {width: 25, height: 25}) }}</a>
+                                                </div>
+                                                <div>
+
                                                 </div>
                                             </div>
-                                        </a>
+                                        {% if is_granted('ROLE_GIN') %}
+                                            </a>
+                                        {% endif %}
                                     </div>
                                 {% endfor %}
                             </div>

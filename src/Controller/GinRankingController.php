@@ -17,6 +17,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\ObjectMapper\ObjectMapperInterface;
 use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 #[Route('/gin-ranking', name: 'gin_ranking_')]
 class GinRankingController extends AbstractController
@@ -29,6 +30,7 @@ class GinRankingController extends AbstractController
         ]);
     }
 
+    #[IsGranted('ROLE_GIN')]
     #[Route('/new', name: 'new')]
     public function new(Request $request, EntityManagerInterface $entityManager, ObjectMapperInterface $objectMapper): Response
     {
@@ -50,6 +52,7 @@ class GinRankingController extends AbstractController
         ]);
     }
 
+    #[IsGranted('ROLE_GIN')]
     #[Route('/{id}/edit', name: 'edit')]
     public function edit(Request $request, Gin $gin, EntityManagerInterface $entityManager, ObjectMapperInterface $objectMapper,
         GinRepository $ginRepository, RemoveFileOnTerminateListener $removeFileOnTerminateListener, FilesystemOperator $ginImageStorage): Response
@@ -76,6 +79,7 @@ class GinRankingController extends AbstractController
         ]);
     }
 
+    #[IsGranted('ROLE_GIN')]
     #[Route('/{id}/remove', name: 'remove')]
     public function remove(Gin $gin, EntityManagerInterface $entityManager): Response
     {
