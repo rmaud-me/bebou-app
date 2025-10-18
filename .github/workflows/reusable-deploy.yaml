@@ -93,4 +93,6 @@ jobs:
           envs: IMAGE_TAG
           script: |
             cd bebou-app
-            IMAGE_TAG=$IMAGE_TAG docker rollout nginx
+            wget -O traefik/static-config.yaml https://raw.githubusercontent.com/rmaud-me/bebou-app/refs/tags/v$IMAGE_TAG/.infra/traefik/static-config.yaml
+            wget -O compose.yaml https://raw.githubusercontent.com/rmaud-me/bebou-app/blob/v$IMAGE_TAG/.infra/compose.yaml
+            export IMAGE_TAG=$IMAGE_TAG && docker rollout php && docker rollout nginx
