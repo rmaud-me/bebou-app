@@ -91,7 +91,6 @@ jobs:
           chmod -R 777 ./
           docker network create hostmanager
           docker compose up -d --wait
-          docker compose exec -T php bin/console -V
 
       - name: PHPStan
         run: docker compose exec -T php ./vendor/bin/phpstan analyse --memory-limit=-1
@@ -126,7 +125,6 @@ jobs:
           chmod -R 777 ./
           docker network create hostmanager
           docker compose up -d --wait
-          docker compose exec -T php bin/console -V
 
       - name: Run php-cs-fixer
         id: php-cs-fixer

@@ -19,6 +19,9 @@ if [ "$1" = 'php-fpm' ] || [ "$1" = 'php' ] || [ "$1" = 'bin/console' ]; then
     setfacl -R -m u:www-data:rwX -m u:"$(whoami)":rwX var
     setfacl -dR -m u:www-data:rwX -m u:"$(whoami)":rwX var
 
+    setfacl -R -m u:www-data:rwX -m u:"$(whoami)":rwX sqlite
+    setfacl -dR -m u:www-data:rwX -m u:"$(whoami)":rwX sqlite
+
     if grep -q ^DATABASE_URL= .env; then
         echo "Waiting for database to be ready..."
         ATTEMPTS_LEFT_TO_REACH_DATABASE=60
