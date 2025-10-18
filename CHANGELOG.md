@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.3.7](https://github.com/rmaud-me/bebou-app/compare/v0.3.6...v0.3.7) (2025-10-18)
+
+
+### Bug Fixes
+
+* **login:** Add log for login route ([e376731](https://github.com/rmaud-me/bebou-app/commit/e3767310eb234fd05c97768f455c7d34106bd762))
+
 ## [0.3.6](https://github.com/rmaud-me/bebou-app/compare/v0.3.5...v0.3.6) (2025-10-18)
 
 
