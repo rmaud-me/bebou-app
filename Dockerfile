@@ -2,8 +2,6 @@ FROM php:8.4-fpm AS bebou_php_base
 
 WORKDIR /srv
 
-VOLUME /srv/var
-
 # Update package list and install system dependencies
 # libcap2-bin Needed for rootless
 RUN apt-get update \
@@ -33,6 +31,8 @@ ENTRYPOINT ["docker-entrypoint"]
 CMD ["php-fpm"]
 
 FROM bebou_php_base AS bebou_php_dev
+
+VOLUME /srv/var
 
 COPY --link .docker/php/conf.d/20-app.dev.ini $PHP_INI_DIR/conf.d/
 
