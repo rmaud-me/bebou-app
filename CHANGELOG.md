@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.3.5](https://github.com/rmaud-me/bebou-app/compare/v0.3.4...v0.3.5) (2025-10-18)
+
+
+### Bug Fixes
+
+* **CD:** Seperate rollout command ([c48e90e](https://github.com/rmaud-me/bebou-app/commit/c48e90e061e750b05101103a657a0137bae1ebae))
+
 ## [0.3.4](https://github.com/rmaud-me/bebou-app/compare/v0.3.3...v0.3.4) (2025-10-18)
 
 
