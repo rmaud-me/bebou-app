@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.3.4](https://github.com/rmaud-me/bebou-app/compare/v0.3.3...v0.3.4) (2025-10-18)
+
+
+### Bug Fixes
+
+* **docker:** Add rights command on sqlite folder ([#42](https://github.com/rmaud-me/bebou-app/issues/42)) ([c0c1d48](https://github.com/rmaud-me/bebou-app/commit/c0c1d485a39f922bae7d4324700137003019ce9b))
+
 ## [0.3.3](https://github.com/rmaud-me/bebou-app/compare/v0.3.2...v0.3.3) (2025-10-18)
 
 
