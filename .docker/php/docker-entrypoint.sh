@@ -11,9 +11,9 @@ if [ "$1" = 'php-fpm' ] || [ "$1" = 'php' ] || [ "$1" = 'bin/console' ]; then
         if [ -d .git ]; then
             git config --global --add safe.directory /srv
         fi
-#
-#        # Composer install needed in dev only because vendor not exist before and needed for the next step.
-#        composer install --prefer-dist --no-progress --no-interaction --no-scripts
+
+        # Composer install needed in dev only because vendor not exist before and needed for the next step.
+        composer install --prefer-dist --no-progress --no-interaction --no-scripts
     fi
 
     setfacl -R -m u:www-data:rwX -m u:"$(whoami)":rwX var
