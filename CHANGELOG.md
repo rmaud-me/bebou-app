@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.3.2](https://github.com/rmaud-me/bebou-app/compare/v0.3.1...v0.3.2) (2025-10-18)
+
+
+### Bug Fixes
+
+* **CD:** Fix compose.yaml url in deployment step ([0b08d0f](https://github.com/rmaud-me/bebou-app/commit/0b08d0f844051ebcbf37c07bf6c09c15a4fe13d5))
+
 ## [0.3.1](https://github.com/rmaud-me/bebou-app/compare/v0.3.0...v0.3.1) (2025-10-18)
 
 
