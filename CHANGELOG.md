@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.3.3](https://github.com/rmaud-me/bebou-app/compare/v0.3.2...v0.3.3) (2025-10-18)
+
+
+### Bug Fixes
+
+* **docker:** Add logs to check php container issue ([#41](https://github.com/rmaud-me/bebou-app/issues/41)) ([3baeefd](https://github.com/rmaud-me/bebou-app/commit/3baeefd0b35c08b8887b927b13d61237d51017ab))
+* **docker:** Uncomment migration part in docker entrypoint ([00ebd1b](https://github.com/rmaud-me/bebou-app/commit/00ebd1be1527f55e8c13524d4738fea1ae9f33cf))
+
 ## [0.3.2](https://github.com/rmaud-me/bebou-app/compare/v0.3.1...v0.3.2) (2025-10-18)
 
 
