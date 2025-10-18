@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.3.1](https://github.com/rmaud-me/bebou-app/compare/v0.3.0...v0.3.1) (2025-10-18)
+
+
+### Bug Fixes
+
+* **infra:** Fix command to deploy + download config infra during deploy ([#37](https://github.com/rmaud-me/bebou-app/issues/37)) ([42e85c7](https://github.com/rmaud-me/bebou-app/commit/42e85c71800aca46ebb884a58ef416fc58cd7c1e))
+
 ## [0.3.0](https://github.com/rmaud-me/bebou-app/compare/v0.2.1...v0.3.0) (2025-10-10)
 
 
