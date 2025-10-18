@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.3.6](https://github.com/rmaud-me/bebou-app/compare/v0.3.5...v0.3.6) (2025-10-18)
+
+
+### Bug Fixes
+
+* **docker:** Remove VOLUME for prod image ([04da598](https://github.com/rmaud-me/bebou-app/commit/04da5987fccb1c9384353a7b85abcf60cf2a28af))
+
 ## [0.3.5](https://github.com/rmaud-me/bebou-app/compare/v0.3.4...v0.3.5) (2025-10-18)
 
 
