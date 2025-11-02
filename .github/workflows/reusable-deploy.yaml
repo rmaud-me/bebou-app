@@ -100,7 +100,7 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           port: ${{ secrets.SSH_PORT }}
           passphrase: ${{ secrets.SSH_PASSPHRASE }}
-          envs: IMAGE_TAG
+          envs: IMAGE_TAG,URL_TAG
           script: |
             cd bebou-app
             wget -O traefik/static-config.yaml https://raw.githubusercontent.com/rmaud-me/bebou-app/refs/tags/$URL_TAG/.infra/traefik/static-config.yaml
