@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.3.8](https://github.com/rmaud-me/bebou-app/compare/v0.3.7...v0.3.8) (2025-11-02)
+
+
+### Bug Fixes
+
+* **login:** Disable turbo for login page ([82dac22](https://github.com/rmaud-me/bebou-app/commit/82dac22d94b033296a607d113ca95239278f3710))
+
 ## [0.3.7](https://github.com/rmaud-me/bebou-app/compare/v0.3.6...v0.3.7) (2025-10-18)
 
 
