@@ -80,10 +80,20 @@ jobs:
       name: ${{ inputs.environment }}
     runs-on: ubuntu-latest
     steps:
+      - name: Check if tag contains 'dev'
+        run: |
+          if [[ "${{ env.IMAGE_TAG }}" == *"dev"* ]]; then
+            echo "It's a 'dev' tag"
+            echo "URL_TAG=${{ inputs.tag }}" >> $GITHUB_ENV
+          else
+            echo "URL_TAG=v${{ inputs.tag }}" >> $GITHUB_ENV
+          fi
+
       - name: Run command on server
         uses: appleboy/ssh-action@v1
         env:
           IMAGE_TAG: ${{ env.IMAGE_TAG }}
+          URL_TAG: ${{ env.URL_TAG }}
         with:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USER }}
@@ -93,7 +103,7 @@ jobs:
           envs: IMAGE_TAG
           script: |
             cd bebou-app
-            wget -O traefik/static-config.yaml https://raw.githubusercontent.com/rmaud-me/bebou-app/refs/tags/v$IMAGE_TAG/.infra/traefik/static-config.yaml
-            wget -O compose.yaml https://raw.githubusercontent.com/rmaud-me/bebou-app/refs/tags/v$IMAGE_TAG/.infra/compose.yaml
+            wget -O traefik/static-config.yaml https://raw.githubusercontent.com/rmaud-me/bebou-app/refs/tags/$URL_TAG/.infra/traefik/static-config.yaml
+            wget -O compose.yaml https://raw.githubusercontent.com/rmaud-me/bebou-app/refs/tags/$URL_TAG/.infra/compose.yaml
             IMAGE_TAG=$IMAGE_TAG docker rollout php
             IMAGE_TAG=$IMAGE_TAG docker rollout nginx
