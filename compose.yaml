@@ -19,6 +19,17 @@ services:
       - ./.docker/config/bash_aliases:/home/appuser/.bash_aliases
       - ./.docker/data/history:/home/appuser/.bash_history
 
+  redis:
+    image: redis:8.2.2-alpine
+    container_name: bebou-redis
+    volumes:
+      - redis:/data
+    healthcheck:
+      test: [ "CMD", "redis-cli", "ping" ]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+
   mailcatcher:
     image: axllent/mailpit
     container_name: bebou-mail
@@ -52,3 +63,6 @@ services:
     depends_on:
       php:
         condition: service_healthy
+
+volumes:
+  redis: ~
