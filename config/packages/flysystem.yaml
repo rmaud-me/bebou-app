@@ -1,17 +1,17 @@
-when@dev: &flysystem_dev
-    flysystem:
-        storages:
-            gin.image.storage:
-                adapter: 'local'
-                options:
-                    directory: '%kernel.public_dir%%env(GIN_RANKING_BASE_PATH)%'
-
-when@test: *flysystem_dev
-
-when@prod:
-    flysystem:
-        storages:
-            default.storage:
-                adapter: 'local'
-                options:
-                    directory: '%kernel.project_dir%/var/storage/default'
+services:
+    scaleway_s3_client:
+        class: 'AsyncAws\S3\S3Client'
+        arguments:
+            -   endpoint: '%env(SCALEWAY_ENDPOINT)%'
+                accessKeyId: '%env(SCALEWAY_S3_ID)%'
+                accessKeySecret: '%env(SCALEWAY_S3_SECRET)%'
+                pathStyleEndpoint: '%env(bool:SCALEWAY_S3_USE_PATH_STYLE_ENDPOINT)%'
+flysystem:
+    storages:
+        scaleway.s3.storage:
+            adapter: 'asyncaws'
+            options:
+                client: 'scaleway_s3_client'
+                bucket: '%env(SCALEWAY_S3_BUCKET)%'
+            public_url:
+                - '%env(SCALEWAY_S3_PUBLIC_URL)%'

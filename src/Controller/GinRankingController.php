@@ -55,7 +55,7 @@ class GinRankingController extends AbstractController
     #[IsGranted('ROLE_GIN')]
     #[Route('/{id}/edit', name: 'edit')]
     public function edit(Request $request, Gin $gin, EntityManagerInterface $entityManager, ObjectMapperInterface $objectMapper,
-        GinRepository $ginRepository, RemoveFileOnTerminateListener $removeFileOnTerminateListener, FilesystemOperator $ginImageStorage): Response
+        GinRepository $ginRepository, RemoveFileOnTerminateListener $removeFileOnTerminateListener, FilesystemOperator $scalewayS3Storage): Response
     {
         $oldPath = $gin->imagePath;
         $form = $this->createForm(GinType::class, $objectMapper->map($gin, GinUpsertDto::class));
@@ -68,7 +68,7 @@ class GinRankingController extends AbstractController
             $entityManager->flush();
 
             if ($oldPath !== $gin->imagePath && !$ginRepository->isUsed($oldPath)) {
-                $removeFileOnTerminateListener->addPathToRemove(new RemoveFileDto($ginImageStorage, $oldPath));
+                $removeFileOnTerminateListener->addPathToRemove(new RemoveFileDto($scalewayS3Storage, $oldPath));
             }
 
             return $this->redirectToRoute('gin_ranking_main');

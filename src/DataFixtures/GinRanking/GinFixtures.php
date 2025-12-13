@@ -16,7 +16,7 @@ class GinFixtures extends Fixture
 {
     public function __construct(
         private readonly ImageUploader $imageUploader,
-        private readonly FilesystemOperator $ginImageStorage,
+        private readonly FilesystemOperator $scalewayS3Storage,
     ) {
     }
 
@@ -74,6 +74,6 @@ class GinFixtures extends Fixture
 
     private function moveAndResize(string $fileToFixtures): string
     {
-        return $this->imageUploader->upload($this->ginImageStorage, new File($fileToFixtures));
+        return $this->imageUploader->upload($this->scalewayS3Storage, new File($fileToFixtures));
     }
 }
