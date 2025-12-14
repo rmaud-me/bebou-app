@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.4.1](https://github.com/rmaud-me/bebou-app/compare/v0.4.0...v0.4.1) (2025-12-14)
+
+
+### Bug Fixes
+
+* **cd:** Add possibility to deploy manually prod tag ([af90d67](https://github.com/rmaud-me/bebou-app/commit/af90d67d4a121427f1b2e3099bd110e7fe7f49ac))
+
 ## [0.4.0](https://github.com/rmaud-me/bebou-app/compare/v0.3.7...v0.4.0) (2025-12-14)
 
 
