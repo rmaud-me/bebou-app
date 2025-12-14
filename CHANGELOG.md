@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.4.2](https://github.com/rmaud-me/bebou-app/compare/v0.4.1...v0.4.2) (2025-12-14)
+
+
+### Bug Fixes
+
+* **cd:** Add step to remove v from tag when redeploy manually a prod tag ([da0c82e](https://github.com/rmaud-me/bebou-app/commit/da0c82e857a9732a1a59c451b3f992d5647b45c9))
+* **gin:** Add edit button + fix edit page iamge display ([7ba3b99](https://github.com/rmaud-me/bebou-app/commit/7ba3b9974d7ca1932c557e5cc47afbd56548df5d))
+
 ## [0.4.1](https://github.com/rmaud-me/bebou-app/compare/v0.4.0...v0.4.1) (2025-12-14)
 
 
