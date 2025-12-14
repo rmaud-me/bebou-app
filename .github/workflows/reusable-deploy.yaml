@@ -81,10 +81,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check if tag contains 'dev'
-        # If tag contains 'dev' or 'v' prefix, it's a manuel deploy, so use input tag directly
         run: |
-          if [[ "${{ env.IMAGE_TAG }}" == *"dev"* || "${{ env.IMAGE_TAG }}" == v* ]]; then
-            echo "It's manual deploy"
+          if [[ "${{ env.IMAGE_TAG }}" == *"dev"* ]]; then
+            echo "It's a 'dev' tag"
             echo "URL_TAG=${{ env.IMAGE_TAG }}" >> $GITHUB_ENV
           else
             echo "URL_TAG=v${{ env.IMAGE_TAG }}" >> $GITHUB_ENV
