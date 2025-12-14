@@ -5,7 +5,7 @@
         <h3>{{ 'gin_ranking.title'|trans }}</h3>
         {% if form.vars.imageToRender is defined and form.vars.imageToRender is not null %}
             <div>
-                <img src="{{ asset(form.vars.imageToRender, 'gin_ranking') }}" alt="{{ form.name.vars.data }}"/>
+                <img src="{{ asset_s3(form.vars.imageToRender) }}" alt="{{ form.name.vars.data }}"/>
             </div>
         {% endif %}
     </div>
