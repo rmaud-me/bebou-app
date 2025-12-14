@@ -16,7 +16,7 @@ use Symfony\Component\ObjectMapper\TransformCallableInterface;
 final readonly class ConvertUploadedFileToFilepathTransformer implements TransformCallableInterface
 {
     public function __construct(
-        private FilesystemOperator $ginImageStorage,
+        private FilesystemOperator $scalewayS3Storage,
         private ImageUploader $imageUploader,
     ) {
     }
@@ -32,6 +32,6 @@ final readonly class ConvertUploadedFileToFilepathTransformer implements Transfo
             throw new \LogicException('Should never happened, value of image is not an instance of ' . UploadedFile::class);
         }
 
-        return $this->imageUploader->upload($this->ginImageStorage, $value);
+        return $this->imageUploader->upload($this->scalewayS3Storage, $value);
     }
 }
