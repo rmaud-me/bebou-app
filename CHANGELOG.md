@@ -1,5 +1,26 @@
 # Changelog
 
+## [0.4.0](https://github.com/rmaud-me/bebou-app/compare/v0.3.7...v0.4.0) (2025-12-14)
+
+
+### Features
+
+* **CD:** Detect if it is dev tag to update correctly traefik config ([4f5e98c](https://github.com/rmaud-me/bebou-app/commit/4f5e98cade36dffeb145601ca3c44125461bc3ea))
+* **s3:** [#27](https://github.com/rmaud-me/bebou-app/issues/27) - Add scaleway as s3 provider ([#53](https://github.com/rmaud-me/bebou-app/issues/53)) ([9b594a2](https://github.com/rmaud-me/bebou-app/commit/9b594a2ca39f96054c91c32648122193dc208f40))
+
+
+### Bug Fixes
+
+* **CD:** Add 30 sec after healthy for php container to be sure php is up for the nginx rollout ([15c4cba](https://github.com/rmaud-me/bebou-app/commit/15c4cba9f0bd971836193b917dc5ab9ce21f3b14))
+* **CD:** Add URL_TAG as env for deploy gha ([8a5526c](https://github.com/rmaud-me/bebou-app/commit/8a5526c5b0a995a64f43887073971f6019aa15af))
+* **login:** Disable csrf stateless config to avoid csrf invalid error ([#49](https://github.com/rmaud-me/bebou-app/issues/49)) ([d840f19](https://github.com/rmaud-me/bebou-app/commit/d840f19cd6f60930618e283e5fd7c0eb05a6c77c))
+* **login:** Disable turbo for login page ([82dac22](https://github.com/rmaud-me/bebou-app/commit/82dac22d94b033296a607d113ca95239278f3710))
+
+
+### Miscellaneous Chores
+
+* **composer:** bump the composer-version group with 30 updates ([#47](https://github.com/rmaud-me/bebou-app/issues/47)) ([b4cd72a](https://github.com/rmaud-me/bebou-app/commit/b4cd72a4288f06cfc163bd339955c0d595001129))
+
 ## [0.3.7](https://github.com/rmaud-me/bebou-app/compare/v0.3.6...v0.3.7) (2025-10-18)
 
 
