@@ -25,27 +25,12 @@ jobs:
           echo "Deploy forbidden from branch"
           exit 1
 
-  # Useful for the architecture of infrastructure with docker rollout
-  remove-v-from-tag:
-    name: Remove 'v' prefix from tag (useful when redeploy prod tag manually)
-    runs-on: ubuntu-latest
-    outputs:
-      tag_name: ${{ steps.remove-v-from-tag.outputs.tag }}
-    steps:
-      - id: remove-v-from-tag
-        run: |
-          if [[ "${{ github.ref_name }}" == v* ]]; then
-             echo "tag=${GITHUB_REF_NAME:1}" >> $GITHUB_OUTPUT
-          else
-              echo "tag=${{ github.ref_name }}" >> $GITHUB_OUTPUT
-          fi
-
   build-deploy:
     name: Build and Deploy
-    needs: [ git-ref-check, remove-v-from-tag ]
+    needs: [ git-ref-check ]
     if: ${{ success() }}
     secrets: inherit
     uses: ./.github/workflows/reusable-deploy.yaml
     with:
-      tag: ${{ needs.remove-v-from-tag.outputs.tag_name }}
+      tag: ${{ github.ref_name }}
       environment: ${{ inputs.environment }}

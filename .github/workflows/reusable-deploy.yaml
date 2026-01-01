@@ -15,7 +15,7 @@ permissions:
   contents: read
 
 env:
-  IMAGE_TAG: ${{ inputs.tag }}
+  VERSION_TAG: ${{ inputs.tag }}
   GHCR_PHP: ${{ vars.GHCR_PHP }}
   GHCR_NGINX: ${{ vars.GHCR_NGINX }}
   GHCR_USERNAME: ${{ vars.GHCR_USERNAME }}
@@ -60,7 +60,7 @@ jobs:
           cache-from: type=gha
           cache-to: type=gha,mode=max
           target: bebou_php_prod
-          tags: ${{ env.GHCR_PHP }}:${{ env.IMAGE_TAG }}
+          tags: ${{ env.GHCR_PHP }}:${{ env.VERSION_TAG }}
           push: true
 
       - name: Build Nginx image
@@ -70,7 +70,7 @@ jobs:
           cache-from: type=gha
           cache-to: type=gha,mode=max
           target: bebou_nginx
-          tags: ${{ env.GHCR_NGINX }}:${{ env.IMAGE_TAG }}
+          tags: ${{ env.GHCR_NGINX }}:${{ env.VERSION_TAG }}
           push: true
 
   deploy:
@@ -80,30 +80,20 @@ jobs:
       name: ${{ inputs.environment }}
     runs-on: ubuntu-latest
     steps:
-      - name: Check if tag contains 'dev'
-        run: |
-          if [[ "${{ env.IMAGE_TAG }}" == *"dev"* ]]; then
-            echo "It's a 'dev' tag"
-            echo "URL_TAG=${{ env.IMAGE_TAG }}" >> $GITHUB_ENV
-          else
-            echo "URL_TAG=v${{ env.IMAGE_TAG }}" >> $GITHUB_ENV
-          fi
-
       - name: Run command on server
         uses: appleboy/ssh-action@v1
         env:
-          IMAGE_TAG: ${{ env.IMAGE_TAG }}
-          URL_TAG: ${{ env.URL_TAG }}
+          VERSION_TAG: ${{ env.VERSION_TAG }}
         with:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USER }}
           key: ${{ secrets.SSH_KEY }}
           port: ${{ secrets.SSH_PORT }}
           passphrase: ${{ secrets.SSH_PASSPHRASE }}
-          envs: IMAGE_TAG,URL_TAG
+          envs: VERSION_TAG
           script: |
             cd bebou-app
-            wget -O traefik/static-config.yaml https://raw.githubusercontent.com/rmaud-me/bebou-app/refs/tags/$URL_TAG/.infra/traefik/static-config.yaml
-            wget -O compose.yaml https://raw.githubusercontent.com/rmaud-me/bebou-app/refs/tags/$URL_TAG/.infra/compose.yaml
-            IMAGE_TAG=$IMAGE_TAG docker rollout --wait-after-healthy 30 php
-            IMAGE_TAG=$IMAGE_TAG docker rollout nginx
+            wget -O traefik/static-config.yaml https://raw.githubusercontent.com/rmaud-me/bebou-app/refs/tags/$VERSION_TAG/.infra/traefik/static-config.yaml
+            wget -O compose.yaml https://raw.githubusercontent.com/rmaud-me/bebou-app/refs/tags/$VERSION_TAG/.infra/compose.yaml
+            VERSION_TAG=$VERSION_TAG docker rollout --wait-after-healthy 30 php
+            VERSION_TAG=$VERSION_TAG docker rollout nginx
