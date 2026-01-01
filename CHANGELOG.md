@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.5.2](https://github.com/rmaud-me/bebou-app/compare/0.5.1...0.5.2) (2026-01-01)
+
+
+### Miscellaneous Chores
+
+* Trigger new release ([3c116f0](https://github.com/rmaud-me/bebou-app/commit/3c116f03ab60bf14eb6a872aa6c16002819bdee8))
+
 ## [0.5.1](https://github.com/rmaud-me/bebou-app/compare/0.5.0...0.5.1) (2026-01-01)
 
 
