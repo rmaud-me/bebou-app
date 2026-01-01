@@ -1,0 +1,29 @@
+name: Test build prod image
+run-name: Test build prod image ${{ github.head_ref }}
+
+on:
+  push:
+    branches:
+      - release-please--branches--main
+
+jobs:
+  build-prod-image:
+    name: Build prod image
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Docker CLI
+        uses: docker/setup-buildx-action@v3
+        with:
+          version: latest
+
+      - name: Build docker image
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+          target: bebou_php_prod
+          load: true
