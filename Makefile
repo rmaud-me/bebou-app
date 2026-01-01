@@ -37,7 +37,7 @@ tests: ## Run all test from scratch
 
 	$(DC) exec php bin/console doctrine:migrations:migrate --env=test --no-interaction
 
-	$(DC) exec php bin/console doctrine:fixtures:load --env=test --no-interaction
+	$(DC) exec php bin/console doctrine:fixtures:load --env=test --no-interaction --no-debug
 
 	$(MAKE) --no-print-directory phpunit
 
