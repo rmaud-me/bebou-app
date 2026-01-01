@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.5.3](https://github.com/rmaud-me/bebou-app/compare/0.5.2...0.5.3) (2026-01-01)
+
+
+### Bug Fixes
+
+* **gin-ranking:** inverse height and width when getting image size ([#64](https://github.com/rmaud-me/bebou-app/issues/64)) ([e9b83d7](https://github.com/rmaud-me/bebou-app/commit/e9b83d7e041feacb88d376ee3bdd10907fbee243))
+
 ## [0.5.2](https://github.com/rmaud-me/bebou-app/compare/0.5.1...0.5.2) (2026-01-01)
 
 
