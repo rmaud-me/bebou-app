@@ -29,9 +29,7 @@ final class ImageOptimizer
         [$iheight, $iwidth] = $sizes;
 
         if ($iheight > self::MAX_HEIGHT) {
-            $ratio = $iwidth / $iheight;
-            $iheight = self::MAX_HEIGHT;
-            $iwidth = $iheight * $ratio;
+            $iwidth = $iwidth * self::MAX_HEIGHT / $iheight;
         }
 
         $photo = $this->imagine->open($filename);

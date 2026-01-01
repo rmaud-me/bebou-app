@@ -53,6 +53,7 @@ cs-fixer: ## Fix cs on the project
 phpstan: ## Run phpstan
 	$(DC) exec php ./vendor/bin/phpstan analyse --memory-limit=-1
 
+qa: cs-fixer phpstan  ## Run QA
 ## UTILS
 php: ## Go to php container
 	$(DC) exec php bash
