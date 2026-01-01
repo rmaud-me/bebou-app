@@ -31,16 +31,12 @@
         "symfony/monolog-bundle": "^4.0.1",
         "symfony/notifier": "8.0.*",
         "symfony/object-mapper": "8.0.*",
-        "symfony/process": "8.0.*",
-        "symfony/property-info": "8.0.*",
         "symfony/runtime": "8.0.*",
         "symfony/scaleway-mailer": "8.0.*",
         "symfony/security-bundle": "8.0.*",
         "symfony/serializer": "8.0.*",
         "symfony/stimulus-bundle": "^2.31",
-        "symfony/string": "8.0.*",
         "symfony/translation": "8.0.*",
-        "symfony/twig-bundle": "8.0.*",
         "symfony/uid": "8.0.*",
         "symfony/ux-chartjs": "^2.31",
         "symfony/ux-icons": "^2.31",
@@ -50,8 +46,7 @@
         "symfony/validator": "8.0.*",
         "symfony/web-link": "8.0.*",
         "symfony/yaml": "8.0.*",
-        "twig/extra-bundle": "^2.12|^3.22.2",
-        "twig/twig": "^2.12|^3.22.2"
+        "twig/extra-bundle": "^2.12|^3.22.2"
     },
     "config": {
         "allow-plugins": {
