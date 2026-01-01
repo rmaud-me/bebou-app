@@ -30,7 +30,9 @@
                                                     <a class="position-absolute z-3 top-0 start-0 p-2" href="{{ path('gin_ranking_edit', {id: gin.id}) }}">{{ ux_icon('bi:pencil-square', {width: 20, height: 20, color: '#435ebe'}) }}</a>
                                                     <a class="position-absolute z-3 top-0 end-0 p-2" href="{{ path('gin_ranking_remove', {id: gin.id}) }}">{{ ux_icon('bi:trash3-fill', {width: 20, height: 20, color: '#dc3545'}) }}</a>
                                                 {% endif %}
-                                                <img src="{{ asset_s3(gin.imagePath) }}" class="rounded gin-ranking-list__img" alt="{{ gin.name }}">
+                                                <div class="bg-white">
+                                                    <img src="{{ asset_s3(gin.imagePath) }}" class="rounded gin-ranking-list__img" alt="{{ gin.name }}">
+                                                </div>
                                                 <div class="card-body text-center p-3">
                                                     {{ gin.name }}
                                                 </div>
