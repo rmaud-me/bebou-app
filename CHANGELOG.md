@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.5.1](https://github.com/rmaud-me/bebou-app/compare/0.5.0...0.5.1) (2026-01-01)
+
+
+### Bug Fixes
+
+* **doctrine:** Remove doctrine "proxy_dir" config ([#60](https://github.com/rmaud-me/bebou-app/issues/60)) ([a30a016](https://github.com/rmaud-me/bebou-app/commit/a30a0161bb708c2fa4e118f73803fc84bfe4cf6e))
+
 ## [0.5.0](https://github.com/rmaud-me/bebou-app/compare/0.4.2...0.5.0) (2026-01-01)
 
 
