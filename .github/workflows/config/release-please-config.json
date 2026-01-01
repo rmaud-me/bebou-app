@@ -3,5 +3,6 @@
     "packages": {
         ".": {}
     },
-    "release-type": "php"
+    "release-type": "php",
+    "include-v-in-tag": false
 }
