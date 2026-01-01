@@ -26,10 +26,11 @@ final class ImageOptimizer
             throw new \LogicException('Cannot getting size of ' . $filename);
         }
 
-        [$iheight, $iwidth] = $sizes;
+        [$iwidth, $iheight] = $sizes;
 
         if ($iheight > self::MAX_HEIGHT) {
             $iwidth = $iwidth * self::MAX_HEIGHT / $iheight;
+            $iheight = self::MAX_HEIGHT;
         }
 
         $photo = $this->imagine->open($filename);
