@@ -1,5 +1,23 @@
 # Changelog
 
+## [0.5.0](https://github.com/rmaud-me/bebou-app/compare/0.4.2...0.5.0) (2026-01-01)
+
+
+### Features
+
+* **release please:** Remove v in tag ([#58](https://github.com/rmaud-me/bebou-app/issues/58)) ([4d6d611](https://github.com/rmaud-me/bebou-app/commit/4d6d611c7f08c62f7344df22a3d952ca31b9269d))
+
+
+### Bug Fixes
+
+* **gin-ranking:** Fix resize image algo + fix form error ([#59](https://github.com/rmaud-me/bebou-app/issues/59)) ([42bd829](https://github.com/rmaud-me/bebou-app/commit/42bd82906e6040092d3e9c87f55eacb63497b5d5))
+
+
+### Miscellaneous Chores
+
+* **composer:** bump the composer-version group across 1 directory with 33 updates ([#54](https://github.com/rmaud-me/bebou-app/issues/54)) ([9837c9f](https://github.com/rmaud-me/bebou-app/commit/9837c9f2b1523063ce09ae936bccfd40dd65f433))
+* **docker:** bump php from 8.4-fpm to 8.5-fpm in the docker-version group ([#51](https://github.com/rmaud-me/bebou-app/issues/51)) ([987ebac](https://github.com/rmaud-me/bebou-app/commit/987ebace9ce1527604101d45ae495c40e353099f))
+
 ## [0.4.2](https://github.com/rmaud-me/bebou-app/compare/v0.4.1...v0.4.2) (2025-12-14)
 
 
