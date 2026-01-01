@@ -18,8 +18,9 @@ final readonly class ImageUploader
 
     public function upload(FilesystemOperator $operator, File $file): string
     {
-        $filename = $file instanceof UploadedFile ? $file->getClientOriginalName() : $file->getFilename();
-        $sluggedOriginalFilename = $this->slugger->slug(\pathinfo($filename, \PATHINFO_FILENAME)) . '.' . $file->guessExtension();
+        $filename = \uniqid($file instanceof UploadedFile ? $file->getClientOriginalName() : $file->getFilename());
+        $sluggedFilenameWithoutExtension = \uniqid($this->slugger->slug(\pathinfo($filename, \PATHINFO_FILENAME)) . '-');
+        $sluggedOriginalFilename = $sluggedFilenameWithoutExtension . '.' . $file->guessExtension();
 
         $file = $file->move($file->getPath(), $sluggedOriginalFilename);
         $this->imageOptimizer->resize($file->getPathname());
