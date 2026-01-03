@@ -23,7 +23,7 @@ security:
                 enable_csrf: true
                 default_target_path: home
             logout:
-                path: app_logout
+                path: security_logout
                 # where to redirect after logout
                 target: home
 
