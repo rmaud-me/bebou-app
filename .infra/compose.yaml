@@ -27,7 +27,7 @@ services:
 
 # Container used to rollout container https://docker-rollout.wowu.dev/
   traefik:
-    image: traefik:v3.5
+    image: traefik:v3.6
     container_name: bebou-traefik
     ports:
       - "9000:80"
