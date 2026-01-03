@@ -6,7 +6,7 @@
     <h1 class="auth-title">{{ 'security.login.title'|trans }}</h1>
     <p class="auth-subtitle mb-5">{{ 'security.login.auth_subtitle'|trans }}</p>
 
-    <form action="{{ path('app_login') }}" method="POST">
+    <form action="{{ path('security_login') }}" method="POST">
         {% if error %}
             <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
         {% endif %}
