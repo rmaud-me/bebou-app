@@ -23,6 +23,10 @@ class SecurityControllerTest extends WebTestCase
         $client->followRedirect();
 
         self::assertResponseIsSuccessful();
+
+        $client->request('GET', '/login');
+        self::assertSelectorExists('#already-connect');
+        self::assertSelectorTextContains('#already-connect', 'Utilisateur déjà connecté en tant que');
     }
 
     public function testLoginNok()
@@ -57,5 +61,24 @@ class SecurityControllerTest extends WebTestCase
         $client->followRedirect();
 
         self::assertSelectorTextContains('.alert-danger', 'Identifiants invalides.');
+    }
+
+    public function testLogout(): void
+    {
+        $client = static::createClient();
+        $client->request('GET', '/login');
+        self::assertResponseIsSuccessful();
+
+        $client->submitForm('Connexion', [
+            '_username' => 'user-gin@rmaud.me',
+            '_password' => 'user-gin@rmaud.me',
+        ]);
+
+        $client->request('GET', '/login');
+        self::assertSelectorExists('#already-connect');
+
+        $client->request('GET', '/logout');
+        $client->request('GET', '/login');
+        self::assertSelectorNotExists('#already-connect');
     }
 }
