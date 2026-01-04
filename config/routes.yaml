@@ -3,3 +3,9 @@ controllers:
         path: ../src/Controller/
         namespace: App\Controller
     type: attribute
+
+dmc_finder_controller:
+    resource:
+        path: ../src/DmcFinder/Controller/
+        namespace: App\DmcFinder\Controller
+    type: attribute

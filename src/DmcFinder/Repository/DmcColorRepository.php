@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace App\Repository\DmcFinder;
+namespace App\DmcFinder\Repository;
 
-use App\Domain\DmcColorRepositoryInterface;
-use App\Domain\Dto\DmcDto;
-use App\Domain\Dto\RgbDto;
+use App\DmcFinder\DmcColorRepositoryInterface;
+use App\DmcFinder\Dto\DmcDto;
+use App\DmcFinder\Dto\RgbDto;
 
 readonly class DmcColorRepository implements DmcColorRepositoryInterface
 {
     public function getAllDmc(): iterable
     {
-        $dmcColorData = \file_get_contents('../data/dmc.json');
+        $dmcColorData = \file_get_contents(__DIR__ . '/../../../data/dmc.json');
         if ($dmcColorData === false) {
             throw new \RuntimeException('File dmc.json not load');
         }
