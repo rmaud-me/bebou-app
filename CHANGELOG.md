@@ -1,5 +1,14 @@
 # Changelog
 
+## [0.5.4](https://github.com/rmaud-me/bebou-app/compare/0.5.3...0.5.4) (2026-01-04)
+
+
+### Bug Fixes
+
+* **fixtures:** Remove resize for fixture to avoid file changes ([d4ad6fa](https://github.com/rmaud-me/bebou-app/commit/d4ad6faa6fa3ab1f2b90426ac68b01ba55a57425))
+* **infra:** Update traefik version to works with the new docker version ([#66](https://github.com/rmaud-me/bebou-app/issues/66)) ([be55a81](https://github.com/rmaud-me/bebou-app/commit/be55a81f7ba969110cde0be4ec09472051da9947))
+* **login:** Remove logger error on login page ([01dfd25](https://github.com/rmaud-me/bebou-app/commit/01dfd2527bd60f86d5ba2c9787998e3d8b4f196d))
+
 ## [0.5.3](https://github.com/rmaud-me/bebou-app/compare/0.5.2...0.5.3) (2026-01-01)
 
 
