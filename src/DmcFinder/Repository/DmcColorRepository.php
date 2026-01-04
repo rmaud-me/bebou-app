@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace App\Repository\DmcFinder;
+namespace App\DmcFinder\Repository;
 
-use App\Domain\DmcColorRepositoryInterface;
-use App\Domain\Dto\DmcDto;
-use App\Domain\Dto\RgbDto;
+use App\DmcFinder\DmcColorRepositoryInterface;
+use App\DmcFinder\Dto\DmcDto;
+use App\DmcFinder\Dto\RgbDto;
 
 readonly class DmcColorRepository implements DmcColorRepositoryInterface
 {
