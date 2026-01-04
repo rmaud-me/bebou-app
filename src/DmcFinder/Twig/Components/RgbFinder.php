@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace App\Twig\Components\DmcFinder;
+namespace App\DmcFinder\Twig\Components;
 
-use App\Domain\DmcColorFinder;
-use App\Domain\Dto\DmcResultDto;
-use App\Domain\Dto\RgbDto;
-use App\Form\DmcFinder\RgbFormType;
+use App\DmcFinder\DmcColorFinder;
+use App\DmcFinder\Dto\DmcResultDto;
+use App\DmcFinder\Dto\RgbDto;
+use App\DmcFinder\Form\RgbFormType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\FormInterface;
 use Symfony\UX\LiveComponent\Attribute\AsLiveComponent;
@@ -15,7 +15,7 @@ use Symfony\UX\LiveComponent\Attribute\LiveAction;
 use Symfony\UX\LiveComponent\ComponentWithFormTrait;
 use Symfony\UX\LiveComponent\DefaultActionTrait;
 
-#[AsLiveComponent(template: 'components/dmc-finder/RgbFinder.html.twig')]
+#[AsLiveComponent(name: 'DmcFinder:RgbFinder', template: 'dmc-finder/components/RgbFinder.html.twig')]
 final class RgbFinder extends AbstractController
 {
     use ComponentWithFormTrait;

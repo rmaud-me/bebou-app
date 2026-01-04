@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Domain\Dto;
+namespace App\DmcFinder\Dto;
 
 readonly class DmcResultDto
 {

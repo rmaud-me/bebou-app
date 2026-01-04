@@ -9,3 +9,9 @@ security_controllers:
         path: ../src/Security/Controller/
         namespace: App\Security\Controller
     type: attribute
+
+dmc_finder_controller:
+    resource:
+        path: ../src/DmcFinder/Controller/
+        namespace: App\DmcFinder\Controller
+    type: attribute
