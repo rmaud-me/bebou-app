@@ -51,6 +51,13 @@ security:
         flashes:
             notice:
                 forgot_password_request_handle: "Demande de changement de mot de passe pris en compte."
+    reset_password:
+        email:
+            subject: "Mot de passe oublié"
+            template:
+                title: "Mot de passe oublié ?"
+                main_sentence: "Nous avons reçu une demande de changement de mot de passe pour votre compte. <br> Si vous n'êtes pas à l'origine de cette demande, ignorez cet email."
+                button: "Changer mon mot de passe"
 
 gin_ranking:
     form:
