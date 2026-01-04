@@ -12,7 +12,7 @@ readonly class DmcColorRepository implements DmcColorRepositoryInterface
 {
     public function getAllDmc(): iterable
     {
-        $dmcColorData = \file_get_contents('../data/dmc.json');
+        $dmcColorData = \file_get_contents(__DIR__ . '/../../../data/dmc.json');
         if ($dmcColorData === false) {
             throw new \RuntimeException('File dmc.json not load');
         }

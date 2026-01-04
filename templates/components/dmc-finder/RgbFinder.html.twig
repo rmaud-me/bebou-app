@@ -31,13 +31,13 @@
 
     {% if rgbSearched %}
         <div class="mt-3">
-            <label>{{ 'dmc_finder.block.rgb_searched'|trans({'%red%': rgbSearched.red, '%green%': rgbSearched.green, '%blue%': rgbSearched.blue, '%hexa%': rgbSearched.toHexa}) }}</label>
+            <label id="search-recap">{{ 'dmc_finder.block.rgb_searched'|trans({'%red%': rgbSearched.red, '%green%': rgbSearched.green, '%blue%': rgbSearched.blue, '%hexa%': rgbSearched.toHexa}) }}</label>
         </div>
     {% endif %}
 
     {% if dmcFound %}
         <hr />
-        <fieldset class="d-flex flex-column">
+        <fieldset id="search-result" class="d-flex flex-column">
             <legend>{{ 'dmc_finder.block.dmc_found.legend'|trans }}</legend>
             <label>#{{ dmcFound.dmc.number }}</label>
             <label>{{ 'dmc_finder.block.dmc_found.name'|trans }} {{ dmcFound.dmc.name }}</label>
