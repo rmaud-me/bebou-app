@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Tests\Controller;
+namespace App\Tests\DmcFinder\Controller;
 
 use App\DmcFinder\Twig\Components\RgbFinder;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
