@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace App\Security\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Bundle\FrameworkBundle\Controller\ControllerHelper;
 use Symfony\Component\DependencyInjection\Attribute\AutowireMethodOf;
 use Symfony\Component\HttpFoundation\Response;
