@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace App\Domain;
+namespace App\DmcFinder;
 
-use App\Domain\Dto\DmcResultDto;
-use App\Domain\Dto\DmcScore;
-use App\Domain\Dto\RgbDto;
+use App\DmcFinder\Dto\DmcResultDto;
+use App\DmcFinder\Dto\DmcScore;
+use App\DmcFinder\Dto\RgbDto;
 
 readonly class DmcColorFinder
 {

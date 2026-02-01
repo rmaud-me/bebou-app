@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace App\Domain;
+namespace App\DmcFinder;
 
-use App\Domain\Dto\DmcDto;
+use App\DmcFinder\Dto\DmcDto;
 
 interface DmcColorRepositoryInterface
 {
