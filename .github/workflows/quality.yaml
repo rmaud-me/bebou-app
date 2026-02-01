@@ -163,11 +163,12 @@ jobs:
           chmod -R 777 ./
           docker network create hostmanager
           docker compose up -d --wait
+          docker compose exec -T php composer install
 
       - name: Run php-cs-fixer
         id: php-cs-fixer
         run: |
-          docker compose exec -T php bash -c "PHP_CS_FIXER_IGNORE_ENV=1 ./vendor/bin/php-cs-fixer fix --verbose --dry-run"
+          docker compose exec -T php bash -c "./vendor/bin/php-cs-fixer fix --verbose --dry-run"
 
       - name: Run twig-cs-fixer
         if: ${{ steps.php-cs-fixer.conclusion == 'failure' || steps.php-cs-fixer.conclusion == 'success' }}

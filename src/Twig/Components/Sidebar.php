@@ -27,7 +27,7 @@ class Sidebar
                 'isTitle' => false,
                 'url' => 'home',
                 'pictureType' => self::PICTURE_TYPE_ICON,
-                'icon' => 'house-fill',
+                'icon' => 'mynaui:home',
             ],
             [
                 'name' => 'menu.items.dmc_finder',

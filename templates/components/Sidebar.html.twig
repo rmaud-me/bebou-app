@@ -13,7 +13,9 @@
                 <twig:ux:icon name="line-md:moon" style="width: 22px; height: 22px;"/>
             </div>
             <div class="sidebar-toggler  x">
-                <a href="#" class="sidebar-hide d-xl-none d-block"><i class="bi bi-x bi-middle"></i></a>
+                <a href="#" class="sidebar-hide d-xl-none d-block">
+                    <twig:ux:icon height="2rem" width="2rem" name="bi:x"/>
+                </a>
             </div>
         </div>
     </div>
@@ -47,7 +49,7 @@
                             {% if sidebarItem.pictureType == constant('PICTURE_TYPE_EMOJI', this) %}
                                 <div class="fs-6">{{ sidebarItem.emoji }}</div>
                             {% else %}
-                                <i class="bi bi-{{ sidebarItem.icon }}"></i>
+                                <twig:ux:icon width="1.5rem" height="1.5rem" name="{{ sidebarItem.icon }}"/>
                             {% endif %}
                             <span>{{ sidebarItem.name|trans }}</span>
                         </a>
