@@ -1,5 +1,3 @@
-parameters:
-    kernel.public_dir: '%kernel.project_dir%/public'
 # see https://symfony.com/doc/current/reference/configuration/framework.html
 framework:
     secret: '%env(APP_SECRET)%'
