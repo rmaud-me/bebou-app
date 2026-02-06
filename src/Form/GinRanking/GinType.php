@@ -54,7 +54,7 @@ class GinType extends AbstractType
         parent::configureOptions($resolver);
         $resolver->setDefault('data_class', GinUpsertDto::class);
         $resolver->setDefault('method', 'POST');
-        $resolver->setDefault('validation_groups', function (Form $form): array {
+        $resolver->setDefault('validation_groups', static function (Form $form): array {
             $data = $form->getData();
 
             return [$data instanceof GinUpsertDto && $data->id !== null ? 'update' : 'Default'];
