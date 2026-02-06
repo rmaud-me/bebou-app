@@ -14,9 +14,9 @@ services:
       - docker.env.local
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.bebou-nginx.rule=Host(`bebou.localhost`)"
-      - "traefik.http.routers.bebou-nginx.entryPoints=web,websecure"
-      - "traefik.http.routers.bebou-nginx.tls=true"
+      - "traefik.http.routers.bebou-php.rule=Host(`bebou.localhost`)"
+      - "traefik.http.routers.bebou-php.entryPoints=web,websecure"
+      - "traefik.http.routers.bebou-php.tls=true"
     networks:
       - hostmanager
       - default
