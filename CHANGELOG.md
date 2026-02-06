@@ -1,5 +1,30 @@
 # Changelog
 
+## [1.0.0](https://github.com/rmaud-me/bebou-app/compare/0.5.3...1.0.0) (2026-02-06)
+
+
+### ⚠ BREAKING CHANGES
+
+* Trigger BC version
+
+### Features
+
+* **infra:** Replace nginx/fpm by frankenphp ([#73](https://github.com/rmaud-me/bebou-app/issues/73)) ([0dfdc30](https://github.com/rmaud-me/bebou-app/commit/0dfdc309d4a5bea2192af51942d21ab0897cb4db))
+
+
+### Bug Fixes
+
+* **fixtures:** Remove resize for fixture to avoid file changes ([d4ad6fa](https://github.com/rmaud-me/bebou-app/commit/d4ad6faa6fa3ab1f2b90426ac68b01ba55a57425))
+* **infra:** Update traefik version to works with the new docker version ([#66](https://github.com/rmaud-me/bebou-app/issues/66)) ([be55a81](https://github.com/rmaud-me/bebou-app/commit/be55a81f7ba969110cde0be4ec09472051da9947))
+* **login:** Remove logger error on login page ([01dfd25](https://github.com/rmaud-me/bebou-app/commit/01dfd2527bd60f86d5ba2c9787998e3d8b4f196d))
+
+
+### Miscellaneous Chores
+
+* **composer:** bump the composer-version group across 1 directory with 34 updates ([#74](https://github.com/rmaud-me/bebou-app/issues/74)) ([1a39436](https://github.com/rmaud-me/bebou-app/commit/1a3943695d80648119a2e604dde492501d423479))
+* **docker compose:** bump redis from 8.2.2-alpine to 8.4.0-alpine in the docker-version group ([#75](https://github.com/rmaud-me/bebou-app/issues/75)) ([2ff6971](https://github.com/rmaud-me/bebou-app/commit/2ff69716f7b46297a0a8c58adcb6a7c6d057700c))
+* Trigger BC version ([7d4bd6c](https://github.com/rmaud-me/bebou-app/commit/7d4bd6c1f9d0b1efab43a73af875c79a76cd422f))
+
 ## [0.5.3](https://github.com/rmaud-me/bebou-app/compare/0.5.2...0.5.3) (2026-01-01)
 
 
