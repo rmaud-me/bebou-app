@@ -84,4 +84,4 @@ jobs:
             cd bebou-app
             wget -O traefik/static-config.yaml https://raw.githubusercontent.com/rmaud-me/bebou-app/refs/tags/$VERSION_TAG/.infra/traefik/static-config.yaml
             wget -O compose.yaml https://raw.githubusercontent.com/rmaud-me/bebou-app/refs/tags/$VERSION_TAG/.infra/compose.yaml
-            IMAGE_TAG=$VERSION_TAG docker rollout --wait-after-healthy 30 php
+            IMAGE_TAG=$VERSION_TAG docker rollout --timeout 120 php
