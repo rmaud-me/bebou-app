@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.2](https://github.com/rmaud-me/bebou-app/compare/1.0.1...1.0.2) (2026-02-06)
+
+
+### Bug Fixes
+
+* **docker:** Healthcheck not working with docker rollout ([#78](https://github.com/rmaud-me/bebou-app/issues/78)) ([0262131](https://github.com/rmaud-me/bebou-app/commit/0262131b85c04526cbed351ac728e9b68dfa96b5))
+
 ## [1.0.1](https://github.com/rmaud-me/bebou-app/compare/1.0.0...1.0.1) (2026-02-06)
 
 
