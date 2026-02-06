@@ -17,7 +17,6 @@ permissions:
 env:
   VERSION_TAG: ${{ inputs.tag }}
   GHCR_PHP: ${{ vars.GHCR_PHP }}
-  GHCR_NGINX: ${{ vars.GHCR_NGINX }}
   GHCR_USERNAME: ${{ vars.GHCR_USERNAME }}
 
 jobs:
@@ -63,16 +62,6 @@ jobs:
           tags: ${{ env.GHCR_PHP }}:${{ env.VERSION_TAG }}
           push: true
 
-      - name: Build Nginx image
-        uses: docker/build-push-action@v6
-        with:
-          context: .
-          cache-from: type=gha
-          cache-to: type=gha,mode=max
-          target: bebou_nginx
-          tags: ${{ env.GHCR_NGINX }}:${{ env.VERSION_TAG }}
-          push: true
-
   deploy:
     name: Deploy to server
     needs: [ build-and-push-image ]
@@ -96,4 +85,3 @@ jobs:
             wget -O traefik/static-config.yaml https://raw.githubusercontent.com/rmaud-me/bebou-app/refs/tags/$VERSION_TAG/.infra/traefik/static-config.yaml
             wget -O compose.yaml https://raw.githubusercontent.com/rmaud-me/bebou-app/refs/tags/$VERSION_TAG/.infra/compose.yaml
             IMAGE_TAG=$VERSION_TAG docker rollout --wait-after-healthy 30 php
-            IMAGE_TAG=$VERSION_TAG docker rollout nginx

@@ -5,8 +5,8 @@ services:
       - "./sqlite/:/srv/sqlite/"
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.nginx.entrypoints=web"
-      - "traefik.http.routers.nginx.rule=Host(`bebou-app.rmaud.me`)"
+      - "traefik.http.routers.php.entrypoints=web"
+      - "traefik.http.routers.php.rule=Host(`bebou-app.rmaud.me`)"
 
   redis:
     image: redis:8.2.2-alpine
