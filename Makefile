@@ -29,7 +29,7 @@ fixtures: ## Load bebou app fixtures
 install-assets: ## Install assets via docker
 	$(DC) exec php bash -c "rm -rf ./assets/vendor && bin/console importmap:install"
 
-reset-assets: install-assets build-assets ## Reset all assets via docker
+reset-assets: install-assets ## Reset all assets via docker
 
 ## QUALITY ✨
 tests: ## Run all test from scratch
