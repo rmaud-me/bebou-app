@@ -90,7 +90,7 @@ jobs:
           cp -n .env.test .env.test.local
           echo "[CI ONLY] Make this because user in container cannot created during composer install. Due to rootless container."
           chmod -R 777 ./
-          docker network create hostmanager
+          docker network create hostmanager || true
           docker compose up -d --wait
           docker compose exec -T php bin/console doctrine:migrations:migrate --env=test --no-interaction
           docker compose exec -T php bin/console doctrine:fixtures:load --env=test --no-interaction --no-debug
@@ -127,8 +127,8 @@ jobs:
           cp -n docker.env docker.env.local
           echo "[CI ONLY] Make this because user in container cannot created during composer install. Due to rootless container."
           chmod -R 777 ./
-          docker network create hostmanager
-          docker compose up -d --wait
+          docker network create hostmanager || true
+          docker compose up -d --wait php
 
       - name: PHPStan
         run: docker compose exec -T php ./vendor/bin/phpstan analyse --memory-limit=-1
@@ -161,8 +161,8 @@ jobs:
           cp -n docker.env docker.env.local
           echo "[CI ONLY] Make this because user in container cannot created during composer install. Due to rootless container."
           chmod -R 777 ./
-          docker network create hostmanager
-          docker compose up -d --wait
+          docker network create hostmanager || true
+          docker compose up -d --wait php
           docker compose exec -T php composer install
 
       - name: Run php-cs-fixer
