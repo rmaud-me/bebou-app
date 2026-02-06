@@ -1,12 +1,7 @@
 #!/bin/sh
 set -e
 
-# first arg is `-f` or `--some-option`
-if [ "${1#-}" != "$1" ]; then
-    set -- php-fpm "$@"
-fi
-
-if [ "$1" = 'php-fpm' ] || [ "$1" = 'php' ] || [ "$1" = 'bin/console' ]; then
+if [ "$1" = 'frankenphp' ] || [ "$1" = 'php' ] || [ "$1" = 'bin/console' ]; then
     if [ "$APP_ENV" != 'prod' ]; then
         if [ -d .git ]; then
             git config --global --add safe.directory /srv
@@ -48,6 +43,8 @@ if [ "$1" = 'php-fpm' ] || [ "$1" = 'php' ] || [ "$1" = 'bin/console' ]; then
             php bin/console doctrine:migrations:migrate --no-interaction
         fi
     fi
+
+    echo 'PHP app ready!'
 fi
 
 exec docker-php-entrypoint "$@"
