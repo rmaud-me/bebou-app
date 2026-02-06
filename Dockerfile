@@ -1,4 +1,6 @@
-FROM php:8.5-fpm AS bebou_php_base
+FROM dunglas/frankenphp:1-php8.5 AS frankenphp_upstream
+
+FROM frankenphp_upstream AS bebou_php_base
 
 WORKDIR /srv
 
@@ -14,38 +16,43 @@ RUN apt-get update \
     && rm -rf /var/lib/apt/lists/* \
 	;
 
-ADD --chmod=0755 https://github.com/mlocati/docker-php-extension-installer/releases/latest/download/install-php-extensions /usr/local/bin/
-
 RUN set -eux; \
     install-php-extensions @composer zip intl apcu opcache gd redis \
     ;
 
-COPY --link .docker/php/conf.d/10-app.ini $PHP_INI_DIR/conf.d/
-
-COPY --link --chmod=755 .docker/php/docker-healthcheck.sh /usr/local/bin/docker-healthcheck
-HEALTHCHECK --start-period=1m CMD docker-healthcheck
-
-COPY --link --chmod=755 .docker/php/docker-entrypoint.sh /usr/local/bin/docker-entrypoint
+COPY --link .docker/frankenphp/conf.d/10-app.ini $PHP_INI_DIR/conf.d/
+COPY --link --chmod=755 .docker/frankenphp/docker-entrypoint.sh /usr/local/bin/docker-entrypoint
+COPY --link .docker/frankenphp/Caddyfile /etc/frankenphp/Caddyfile
 
 ENTRYPOINT ["docker-entrypoint"]
-CMD ["php-fpm"]
+
+HEALTHCHECK --start-period=60s CMD curl -f http://localhost:2019/metrics || exit 1
+
+CMD [ "frankenphp", "run", "--config", "/etc/frankenphp/Caddyfile" ]
 
 FROM bebou_php_base AS bebou_php_dev
 
+ENV FRANKENPHP_WORKER_CONFIG=watch
+
 VOLUME /srv/var
 
-COPY --link .docker/php/conf.d/20-app.dev.ini $PHP_INI_DIR/conf.d/
+RUN mv "$PHP_INI_DIR/php.ini-development" "$PHP_INI_DIR/php.ini"
 
 RUN set -eux; \
 	install-php-extensions xdebug \
     ;
 
+COPY --link .docker/frankenphp/conf.d/20-app.dev.ini $PHP_INI_DIR/conf.d/
+
 # Uncomment if you want rootless container
 # CAP_FOWNER+ep /usr/bin/setfacl instruction authorize appuser to use setfacl
 RUN adduser --disabled-password --gecos "" appuser \
-    && chown -R appuser /srv \
+    && chown -R appuser /srv /config/caddy /data/caddy \
+    && setcap CAP_NET_BIND_SERVICE=+eip /usr/local/bin/frankenphp \
     && setcap CAP_FOWNER+ep /usr/bin/setfacl \
     ;
+
+CMD [ "frankenphp", "run", "--config", "/etc/frankenphp/Caddyfile", "--watch" ]
 
 USER appuser
 
@@ -56,12 +63,14 @@ ENV APP_ENV=prod
 # Uncomment if you want rootless container
 # CAP_FOWNER+ep /usr/bin/setfacl instruction authorize appuser to use setfacl
 RUN adduser --disabled-password --gecos "" appuser \
-    && chown -R appuser /srv \
+    && chown -R appuser /srv /config/caddy /data/caddy \
+    && setcap CAP_NET_BIND_SERVICE=+eip /usr/local/bin/frankenphp \
     && setcap CAP_FOWNER+ep /usr/bin/setfacl \
     ;
 
 RUN mv "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini"
-COPY --link .docker/php/conf.d/20-app.prod.ini $PHP_INI_DIR/conf.d/
+
+COPY --link .docker/frankenphp/conf.d/20-app.prod.ini $PHP_INI_DIR/conf.d/
 
 # prevent the reinstallation of vendors at every changes in the source code
 COPY --link ./composer.* ./symfony.* ./
@@ -86,11 +95,3 @@ RUN set -eux; \
 ###< Build assets ###
 
 USER appuser
-
-FROM nginx:1.29-alpine AS bebou_nginx
-
-COPY --link .docker/nginx/nginx.conf /etc/nginx/conf.d/default.conf
-
-COPY --from=bebou_php_prod --link /srv/public /srv/public
-
-CMD ["/bin/sh" , "-c" , "exec nginx -g 'daemon off;'"]
