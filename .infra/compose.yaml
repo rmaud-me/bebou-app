@@ -1,0 +1,33 @@
+services:
+  php:
+    image: ghcr.io/rmaud-me/bebou-php:${IMAGE_TAG}
+    volumes:
+      - "./sqlite/:/srv/sqlite/"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.nginx.entrypoints=web"
+      - "traefik.http.routers.nginx.rule=Host(`bebou-app.rmaud.me`)"
+
+  redis:
+    image: redis:8.2.2-alpine
+    container_name: bebou-redis
+    volumes:
+      - redis:/data
+    healthcheck:
+      test: [ "CMD", "redis-cli", "ping" ]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+
+  # Container used to rollout container https://docker-rollout.wowu.dev/
+  traefik:
+    image: traefik:v3.6
+    container_name: bebou-traefik
+    ports:
+      - "9000:80"
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock:ro"
+      - "./traefik/static-config.yaml:/etc/traefik/traefik.yaml"
+
+volumes:
+  redis: ~
