@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.0.3](https://github.com/rmaud-me/bebou-app/compare/1.0.2...1.0.3) (2026-02-06)
+
+
+### Bug Fixes
+
+* **infra:** Force http on frankenphp ([5cf5f25](https://github.com/rmaud-me/bebou-app/commit/5cf5f2507cbfead72e51c2fbb2349a36c2775336))
+* **stimulus:** Add stimulus bundle in stimulus bootstrap ([e3b6884](https://github.com/rmaud-me/bebou-app/commit/e3b6884b131c44a4fdd961cb6e5f6f32dd0d25b3))
+
 ## [1.0.2](https://github.com/rmaud-me/bebou-app/compare/1.0.1...1.0.2) (2026-02-06)
 
 
