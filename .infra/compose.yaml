@@ -7,6 +7,8 @@ services:
       - "traefik.enable=true"
       - "traefik.http.routers.php.entrypoints=web"
       - "traefik.http.routers.php.rule=Host(`bebou-app.rmaud.me`)"
+    environment:
+      - SERVER_NAME=:80
 
   redis:
     image: redis:8.2.2-alpine
