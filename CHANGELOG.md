@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.1](https://github.com/rmaud-me/bebou-app/compare/1.0.0...1.0.1) (2026-02-06)
+
+
+### Bug Fixes
+
+* **infra:** Remove nginx from CD ([#76](https://github.com/rmaud-me/bebou-app/issues/76)) ([102aefe](https://github.com/rmaud-me/bebou-app/commit/102aefed933d85dd917217f644ef59d3971a9e18))
+
 ## [1.0.0](https://github.com/rmaud-me/bebou-app/compare/0.5.3...1.0.0) (2026-02-06)
 
 
