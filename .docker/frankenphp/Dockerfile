@@ -4,10 +4,8 @@ FROM frankenphp_upstream AS bebou_php_base
 
 WORKDIR /srv
 
-VOLUME /srv/var
-
 # Update package list and install system dependencies
-# libcap2-bin remove it if you do not want rootless
+# libcap2-bin Needed for rootless
 RUN apt-get update \
     && apt-get install -y --no-install-recommends \
 	acl \

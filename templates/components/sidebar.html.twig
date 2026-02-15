@@ -5,12 +5,12 @@
                 <a href="{{ path('home') }}"><img src="{{ asset('images/logo/bebou-logo.svg') }}" alt="{{ 'app_name'|trans }}"></a>
             </div>
             <div class="theme-toggle d-flex gap-2  align-items-center mt-2">
-                <twig:ux:icon name="line-md:sunny-outline-loop" style="width: 22px; height: 22px;"/>
-                <div data-controller="dark" class="form-check form-switch fs-6 px-0">
-                    <input class="form-check-input mx-0" type="checkbox" id="toggle-dark" style="cursor: pointer">
+                <twig:ux:icon height="20px" width="20px" name="line-md:sunny-twotone-loop" />
+                <div data-controller="dark" class="form-check form-switch fs-6">
+                    <input class="form-check-input me-0" type="checkbox" id="toggle-dark" style="cursor: pointer">
                     <label class="form-check-label"></label>
                 </div>
-                <twig:ux:icon name="line-md:moon" style="width: 22px; height: 22px;"/>
+                <twig:ux:icon height="20px" width="20px" name="line-md:sunny-outline-to-moon-loop-transition" />
             </div>
             <div class="sidebar-toggler  x">
                 <a href="#" class="sidebar-hide d-xl-none d-block">
@@ -73,7 +73,8 @@
                             </ul>
                         {% endif %}
                     </li>
-            {% endif %}{% endfor %}
+                {% endif %}
+            {% endfor %}
         </ul>
     </div>
 </div>

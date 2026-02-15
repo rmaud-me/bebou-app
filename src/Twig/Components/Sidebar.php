@@ -6,7 +6,7 @@ namespace App\Twig\Components;
 
 use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
 
-#[AsTwigComponent(template: 'components/Sidebar.html.twig')]
+#[AsTwigComponent(template: 'components/sidebar.html.twig')]
 class Sidebar
 {
     public const string PICTURE_TYPE_EMOJI = 'emoji';
