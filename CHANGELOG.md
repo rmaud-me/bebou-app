@@ -1,5 +1,24 @@
 # Changelog
 
+## [1.1.0](https://github.com/rmaud-me/bebou-app/compare/1.0.3...1.1.0) (2026-02-15)
+
+
+### Features
+
+* **docker:** Make some template update ([#81](https://github.com/rmaud-me/bebou-app/issues/81)) ([e68988d](https://github.com/rmaud-me/bebou-app/commit/e68988d77bfb5ca1cd4fd32d936cbc1682e4de0f))
+
+
+### Bug Fixes
+
+* **dependabot:** Add infra directory for compose of infra ([d0806a3](https://github.com/rmaud-me/bebou-app/commit/d0806a38360e9177c87682553b1f6402d644442c))
+* **docker:** Remove unused Dockerfile ([a50dd63](https://github.com/rmaud-me/bebou-app/commit/a50dd634828581a66e479752dc4e8bf5d5a03e1f))
+
+
+### Miscellaneous Chores
+
+* **composer:** bump the composer-version group with 2 updates ([#84](https://github.com/rmaud-me/bebou-app/issues/84)) ([fa53c87](https://github.com/rmaud-me/bebou-app/commit/fa53c876037c1b18e59cf57506582e240a91a31c))
+* **docker compose:** bump the docker-version group across 2 directories with 1 update ([#85](https://github.com/rmaud-me/bebou-app/issues/85)) ([bb6d10b](https://github.com/rmaud-me/bebou-app/commit/bb6d10b7236509a9d1229d2f26d872a3fddf56f3))
+
 ## [1.0.3](https://github.com/rmaud-me/bebou-app/compare/1.0.2...1.0.3) (2026-02-06)
 
 
