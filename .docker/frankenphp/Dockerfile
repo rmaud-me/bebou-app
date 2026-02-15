@@ -4,8 +4,6 @@ FROM frankenphp_upstream AS bebou_php_base
 
 WORKDIR /srv
 
-VOLUME /srv/var
-
 # Update package list and install system dependencies
 # libcap2-bin Needed for rootless
 RUN apt-get update \
