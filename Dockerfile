@@ -7,7 +7,7 @@ WORKDIR /srv
 VOLUME /srv/var
 
 # Update package list and install system dependencies
-# libcap2-bin Needed for rootless
+# libcap2-bin remove it if you do not want rootless
 RUN apt-get update \
     && apt-get install -y --no-install-recommends \
 	acl \
