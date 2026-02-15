@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.1](https://github.com/rmaud-me/bebou-app/compare/1.1.0...1.1.1) (2026-02-15)
+
+
+### Bug Fixes
+
+* **deployment:** Remove redis rollout + Change docker healthcheck to avoid serveur freeze ([#86](https://github.com/rmaud-me/bebou-app/issues/86)) ([e74c7e6](https://github.com/rmaud-me/bebou-app/commit/e74c7e6bc4fcfe58b037a7a88237ad102c5a4351))
+
 ## [1.1.0](https://github.com/rmaud-me/bebou-app/compare/1.0.3...1.1.0) (2026-02-15)
 
 
