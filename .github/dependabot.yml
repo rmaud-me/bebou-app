@@ -24,7 +24,6 @@ updates:
   - package-ecosystem: "docker" # See documentation for possible values
     directories:
       - "/"
-      - "/.docker/frankenphp"
     schedule:
       interval: "monthly"
     commit-message:
@@ -44,7 +43,9 @@ updates:
           - patch
 
   - package-ecosystem: "docker-compose" # See documentation for possible values
-    directory: "/" # Location of package manifests
+    directories:
+      - "/"
+      - "/.infra"
     schedule:
       interval: "monthly"
     commit-message:
