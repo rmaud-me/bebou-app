@@ -14,6 +14,14 @@
     height: 3rem !important;
 }
 
+html[data-bs-theme=dark] .form-label {
+    margin-bottom: 4px;
+}
+
+.form-label {
+    margin-bottom: 4px;
+}
+
 /* Bootstrap media query xl */
 @media (min-width: 1200px) {
     #main #main-content {

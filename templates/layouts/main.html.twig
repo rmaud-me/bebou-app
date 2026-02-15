@@ -1,15 +1,24 @@
-{% extends 'layouts/base.html.twig' %}
+{% extends 'layouts/root.html.twig' %}
 
 {% block body %}
     <div id="app">
         <div id="sidebar" data-controller="sidebar">
             <twig:Sidebar/>
         </div>
-        <div id="main" class="layout-navbar">
+        <div id="main" class="layout-navbar navbar-fixed">
             <header class="mb-3">
-                {{ include('_partials/vertical-nav.html.twig') }}
+                {{ include('layouts/_partials/vertical-nav.html.twig') }}
             </header>
             <div id="main-content">
+                <div id="flash-messages">
+                    {% for type, messages in app.flashes %}
+                        {% for message in messages %}
+                            <twig:Alert type="{{ type }}">
+                                {{ message|raw }}
+                            </twig:Alert>
+                        {% endfor %}
+                    {% endfor %}
+                </div>
                 {% block content %}
                 {% endblock %}
             </div>
