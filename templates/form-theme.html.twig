@@ -118,8 +118,7 @@
     {% if required %}
         {% set default_row_class = default_row_class ~ ' ' ~ required_class %}
     {% endif %}
-    {%- set row_attr = row_attr|merge({class: default_row_class}) -%}
-
+    {%- set row_attr = {class: default_row_class ~ ' ' ~ row_attr.class} -%}
     {%- set widget_attr = {} -%}
     {%- if help is not empty -%}
         {%- set widget_attr = {attr: {'aria-describedby': id ~ '_help'}} -%}
