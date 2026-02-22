@@ -11,6 +11,7 @@ import './mazer/css/app-dark.css';
 import './styles/bootstrap.override.css';
 import './styles/custom-app.css';
 import './styles/gin-ranking/list.css';
+import './styles/gin-ranking/edit.css';
 
 import './mazer/js/initTheme.js';
 import './vendor/perfect-scrollbar/perfect-scrollbar.index.js';
