@@ -75,13 +75,21 @@ Ce projet est un **terrain d'expérimentation** pour explorer l'architecture log
 
 ## 🤖 Règles pour Claude (l'IA)
 
-### ⚠️ RÈGLE ABSOLUE : VÉRIFICATION OBLIGATOIRE
-**TOUJOURS** vérifier les informations avant de les communiquer :
-- ❌ Ne JAMAIS donner une information non vérifiée
-- ✅ Lire le code source pour confirmer
-- ✅ Tester les commandes avant de les suggérer
-- ✅ Chercher dans la documentation officielle si nécessaire
-- ✅ Si incertain, le dire explicitement : "Je ne suis pas sûr, laisse-moi vérifier..."
+### ⚠️ RÈGLE : VÉRIFICATION INTELLIGENTE (optimisée pour les crédits IA)
+**Principe** : Privilégier la précision tout en préservant les crédits IA JetBrains.
+
+**Quand vérifier** :
+- ✅ Si **certain** → Répondre directement avec confiance
+- ✅ Si **incertain** → Dire explicitement "Je ne suis pas sûr" ET vérifier
+- ✅ Si **demande explicite** de vérification → Vérifier systématiquement
+- ✅ **Toujours** lire le code source du projet pour confirmer (gratuit)
+- ✅ **Toujours** tester les commandes bash avant de les suggérer (gratuit)
+- ❌ **Ne jamais** inventer ou deviner des informations
+
+**Optimisations pour réduire les coûts** :
+- Privilégier la lecture du code source (`vendor/`, `src/`) plutôt que recherches web
+- Utiliser les connaissances déjà acquises si récentes et fiables
+- Grouper les vérifications si plusieurs questions liées
 
 **Exemple à NE PAS FAIRE** :
 ```
@@ -90,11 +98,26 @@ Claude : "Tu peux utiliser la commande X pour faire Y"
 Claude : "Ah désolé, je n'avais pas vérifié..."
 ```
 
-**Exemple à FAIRE** :
+**Exemples à FAIRE** :
+
+*Cas 1 : Certain*
 ```
-Claude : "Laisse-moi vérifier quelle commande utiliser..."
-*lit la doc / teste*
-Claude : "J'ai vérifié, la commande est X, voici ce qu'elle fait..."
+Claude : "Pour créer une entité Doctrine, utilise : bin/console make:entity"
+*Pas de vérification web, c'est une connaissance de base Symfony*
+```
+
+*Cas 2 : Incertain*
+```
+Claude : "Je ne suis pas sûr de la syntaxe exacte de cette commande.
+         Laisse-moi vérifier..."
+*lit la doc ou le code source*
+Claude : "J'ai vérifié, la commande est X"
+```
+
+*Cas 3 : Vérification demandée*
+```
+Toi : "Vérifie si c'est la bonne approche"
+Claude : *recherche/lit le code* "J'ai vérifié, voici ce que j'ai trouvé..."
 ```
 
 ### Workflow de travail
@@ -109,14 +132,15 @@ Claude : "J'ai vérifié, la commande est X, voici ce qu'elle fait..."
 - ✅ Proposer de créer un ADR pour les décisions architecturales importantes
 - ✅ Challenger les choix architecturaux (c'est un projet d'apprentissage !)
 - ✅ Documenter le code complexe dans `.docs/` selon Diátaxis
-- ✅ **VÉRIFIER** toute information avant de la communiquer
+- ✅ Appliquer la règle de vérification intelligente (voir ci-dessus)
 
 ### Ce que Claude ne doit PAS faire
 - ❌ Créer des classes `*Service` génériques
 - ❌ Modifier du code sans expliquer pourquoi
 - ❌ Oublier les tests
 - ❌ Faire des choix architecturaux sans proposer d'alternatives
-- ❌ **Donner des informations non vérifiées**
+- ❌ Inventer ou deviner des informations
+- ❌ Faire des recherches web inutiles qui consomment des crédits
 
 ### Approche pédagogique
 Ce projet est un terrain d'apprentissage. Claude doit :
@@ -149,5 +173,5 @@ Ce projet est un terrain d'apprentissage. Claude doit :
 
 ---
 
-**Version** : 1.1
+**Version** : 1.2
 **Dernière mise à jour** : 2026-03-16
