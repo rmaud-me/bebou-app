@@ -16,7 +16,7 @@ class DmcFinderControllerTest extends WebTestCase
 {
     use InteractsWithLiveComponents;
 
-    public function testPageWithFormAppear()
+    public function testPageWithFormAppear(): void
     {
         $client = static::createClient();
         $client->request('GET', '/dmc-finder');
@@ -26,7 +26,7 @@ class DmcFinderControllerTest extends WebTestCase
         self::assertSelectorExists('[name=rgb_form]');
     }
 
-    public function testRgbFinderWorks()
+    public function testRgbFinderWorks(): void
     {
         $client = static::createClient();
         $session = new Session(new MockFileSessionStorage());

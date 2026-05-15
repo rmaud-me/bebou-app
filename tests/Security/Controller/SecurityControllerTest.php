@@ -8,7 +8,7 @@ use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 class SecurityControllerTest extends WebTestCase
 {
-    public function testLoginOk()
+    public function testLoginOk(): void
     {
         $client = static::createClient();
         $client->request('GET', '/login');
@@ -29,7 +29,7 @@ class SecurityControllerTest extends WebTestCase
         self::assertSelectorTextContains('#already-connect', 'Utilisateur déjà connecté en tant que');
     }
 
-    public function testLoginNok()
+    public function testLoginNok(): void
     {
         $client = static::createClient();
         $client->request('GET', '/login');
