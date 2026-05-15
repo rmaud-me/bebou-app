@@ -28,7 +28,7 @@ services:
       - ./.docker/data/history:/home/appuser/.bash_history
 
   redis:
-    image: redis:8.6.0-alpine
+    image: redis:8.6.2-alpine
     container_name: bebou-redis
     volumes:
       - redis:/data
@@ -55,7 +55,7 @@ services:
       - default
 
   localstack:
-    image: localstack/localstack:latest
+    image: localstack/localstack:4.14
     container_name: bebou-localstack
     environment:
       - SERVICES=s3
