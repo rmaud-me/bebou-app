@@ -55,7 +55,7 @@ services:
       - default
 
   localstack:
-    image: localstack/localstack:latest
+    image: localstack/localstack:4.14
     container_name: bebou-localstack
     environment:
       - SERVICES=s3
