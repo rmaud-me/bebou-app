@@ -1,11 +1,15 @@
 {% extends 'layouts/main.html.twig' %}
-{% block title %}{{ 'dmc_finder.title'|trans }}{% endblock %}
+{% block title %}
+    {{ 'dmc_finder.title'|trans }}
+{% endblock %}
+
+{% block heading %}
+    <h1>{{ 'dmc_finder.title'|trans }}</h1>
+{% endblock %}
+
 {% block content %}
-    <div class="page-heading">
-        <h3>{{ 'dmc_finder.title'|trans }}</h3>
-    </div>
-    <div class="page-content d-sm-flex align-items-center justify-content-sm-center">
-        <div class="card">
+    <div class="page-content row">
+        <div class="card col-md-9 col-lg-5 mx-auto">
             <div class="card-content">
                 <div class="card-body">
                     <twig:DmcFinder:RgbFinder/>

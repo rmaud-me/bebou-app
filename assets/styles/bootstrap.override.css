@@ -1,0 +1,24 @@
+.mb-2-5 {
+    margin-bottom: 0.75rem !important;
+}
+
+@media (min-width: 768px) {
+    .w-md-reset {
+        width: inherit !important;
+    }
+    .w-md-10 {
+        width: 10% !important;
+    }
+    .w-md-33 {
+        width: 33% !important;
+    }
+    .w-md-50 {
+        width: 50% !important;
+    }
+    .w-md-66 {
+        width: 66% !important;
+    }
+    .w-md-75 {
+        width: 75% !important;
+    }
+}
