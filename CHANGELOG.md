@@ -1,5 +1,18 @@
 # Changelog
 
+## [1.1.2](https://github.com/rmaud-me/bebou-app/compare/1.1.1...1.1.2) (2026-05-25)
+
+
+### Bug Fixes
+
+* **front:** fix some front issue ([#88](https://github.com/rmaud-me/bebou-app/issues/88)) ([1ec7c69](https://github.com/rmaud-me/bebou-app/commit/1ec7c69c2270c902d3fcbdec477bb9906b817730))
+
+
+### Miscellaneous Chores
+
+* **composer:** bump the composer-version group across 1 directory with 37 updates ([#97](https://github.com/rmaud-me/bebou-app/issues/97)) ([7b4e62e](https://github.com/rmaud-me/bebou-app/commit/7b4e62eb8caf74e42c02dac8e9ba4b13eaff10ff))
+* **docker compose:** bump the docker-version group across 2 directories with 1 update ([#93](https://github.com/rmaud-me/bebou-app/issues/93)) ([72d1924](https://github.com/rmaud-me/bebou-app/commit/72d1924322354577e65b8aae15cd3907b66ac944))
+
 ## [1.1.1](https://github.com/rmaud-me/bebou-app/compare/1.1.0...1.1.1) (2026-02-15)
 
 
