@@ -6,25 +6,16 @@
             'data-live-action-param': 'submit',
         },
     }) }}
-        <div class="form-body">
-            <div class="row d-flex align-items-baseline">
-                <div class="col-auto">
-                    {{ form_label(form.hexaText) }}
-                </div>
-                <div class="col-auto">
-                    {{ form_widget(form.hexaText) }}
-                    {{ form_errors(form.hexaText) }}
-                </div>
-                {% if rgbSearched %}
-                    <div class="col-auto">
-                        <input type="color" class="form-control form-control-color" readonly disabled value="{{ rgbSearched.toHexa }}" />
-                    </div>
-                {% endif %}
-                <div class="col-auto">
-                    <twig:Button size="small">{{ 'dmc_finder.form.submit.label'|trans }}</twig:Button>
-                </div>
-            </div>
+    <div class="form-body">
+        <div class="d-flex flex-column flex-md-row flex-md-nowrap flex-wrap align-items-end">
+            {{ form_row(form.hexaText, {row_attr: {class: 'w-100 pe-md-2'}}) }}
+            {% if rgbSearched %}
+                <label for="rgb-searched" class="visually-hidden"></label>
+                <input id="rgb-searched" type="color" class="form-control form-control-color w-100 w-md-10 mb-2-5 me-md-2" readonly disabled value="{{ rgbSearched.toHexa }}"/>
+            {% endif %}
+            <twig:Button class="w-100 w-md-reset flex-md-shrink-1 mb-2-5" size="normal">{{ 'dmc_finder.form.submit.label'|trans }}</twig:Button>
         </div>
+    </div>
     {{ form_end(form) }}
 
     {% if rgbSearched %}
@@ -34,13 +25,13 @@
     {% endif %}
 
     {% if dmcFound %}
-        <hr />
+        <hr/>
         <fieldset id="search-result" class="d-flex flex-column">
             <legend>{{ 'dmc_finder.block.dmc_found.legend'|trans }}</legend>
             <label>#{{ dmcFound.dmc.number }}</label>
             <label>{{ 'dmc_finder.block.dmc_found.name'|trans }} {{ dmcFound.dmc.name }}</label>
             <div class="d-flex">
-                <label class="me-2 align-self-center">{{ 'dmc_finder.block.dmc_found.color'|trans }}</label><input type="color" readonly disabled class="form-control form-control-color" value="{{ dmcFound.dmc.rgb.toHexa }}" />
+                <label class="me-2 align-self-center">{{ 'dmc_finder.block.dmc_found.color'|trans }}</label><input type="color" readonly disabled class="form-control form-control-color" value="{{ dmcFound.dmc.rgb.toHexa }}"/>
             </div>
             <label>{{ 'dmc_finder.block.dmc_found.rgb'|trans({'%red%': dmcFound.dmc.rgb.red, '%green%': dmcFound.dmc.rgb.green, '%blue%': dmcFound.dmc.rgb.blue, '%hexa%': dmcFound.dmc.rgb.toHexa}) }}</label>
             <label><em>{{ 'dmc_finder.block.dmc_found.score_rgb'|trans({'%red%': dmcFound.score.diffRed, '%green%': dmcFound.score.diffGreen, '%blue%': dmcFound.score.diffBlue, '%score%': dmcFound.score.total}) }}</em></label>
