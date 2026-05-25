@@ -55,23 +55,23 @@ services:
       - default
 
   localstack:
-    image: localstack/localstack:4.14
-    container_name: bebou-localstack
+    image: floci/floci:latest
+    container_name: bebou-floci
     environment:
       - SERVICES=s3
-      - PERSISTENCE=1
+      - FLOCI_STORAGE_MODE=persistent
     volumes:
-      - localstack:/var/lib/localstack
+      - floci:/app/data
       - /var/run/docker.sock:/var/run/docker.sock
-      - ./.docker/localstack:/etc/localstack/init/ready.d
+      - ./.docker/floci:/etc/floci/init/ready.d
     ports:
       - "4566:4566"
     healthcheck:
-      test: [ "CMD", "curl", "-f", "http://localhost:4566/_localstack/health" ]
+      test: [ "CMD", "curl", "-f", "http://localhost:4566/_floci/health" ]
       interval: 5s
       timeout: 10s
       retries: 5
 
 volumes:
   redis: ~
-  localstack: ~
+  floci: ~
