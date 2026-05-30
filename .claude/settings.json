@@ -1,0 +1,31 @@
+{
+  "permissions": {
+    "deny": [
+      "Read(./.env)",
+      "Read(./.env.*)",
+      "Read(./docker.env)",
+      "Read(./docker.env.local)",
+      "Read(./var/cache/**)",
+      "Read(./var/log/**)",
+      "Read(~/.ssh/**)",
+      "Read(~/.aws/**)",
+      "Read(~/.config/**)",
+      "Read(~/.bash_history)",
+      "Read(~/.bash_aliases)",
+      "Write(./.env)",
+      "Write(./.env.*)",
+      "Write(./docker.env)",
+      "Write(./docker.env.local)",
+      "Write(./vendor/**)",
+      "Write(./composer.json)",
+      "Write(./composer.lock)",
+      "Write(./symfony.lock)",
+      "Write(~/**)"
+    ]
+  },
+  "hooks": {
+    "beforeBash": {
+      "enabled": true
+    }
+  }
+}
